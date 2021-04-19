@@ -413,47 +413,44 @@ Read more
 
 import re
 def get_data(d):
+  """相当于从筛选出所有本国评论字符串进行操作
+        1.根据Report abuse进行分割，同时筛去最后为空的部分..
+        2
+
+  
+  """
 
   DataList = []
+  #正则表达式的编译就是..re.compile 匹配的是 /> .*是所有的字符串   
   matchObj = re.compile(r'\/\>(.*)(\d+\.\d)+')
   manNstar = matchObj.findall(d)
-  # print(manNstar)
 
-
+  #选择的是所有的review...
   # xpathAllReviewXpath = 'div[@data-hook="review"]'
   # xpathReviewCurCountryXpath =".//div[@class='a-section review aok-relative']"
   # reviews = d.find_elements_by_xpath(xpathReviewCurCountryXpath)
   s1=[i for  i in d.split("Report abuse") if len(i.strip())>10] #每个评论以Report abuse 分段，且去掉最后的空评论
+  print(s1)
 
-
-  # p1,title,info,comment,READMORE,helpfulNum,_=[i.strip() for i in str.splitds() if len(i.replace(" ", ""))>0]
   for idx,review in enumerate(s1):
-      # print("==========================================start================================")
       reviewItem = {}
-      # l=[i.strip() for i in str.splitlines(review) if len(i.replace(" ", ""))>0]
       _,p2,p3,p4,*p5 = [i.strip() for i in str.splitlines(review) if len(i.strip())>0 ]
 
-      reviewItem["name"] = manNstar[idx][0]
-      reviewItem["star"] = manNstar[idx][1]
+      reviewItem["Name"] = manNstar[idx][0]
+      reviewItem["Star"] = manNstar[idx][1]
       
 
-      reviewItem["title"] = p2
-      reviewItem["shoppinginfo"] = p3
+      reviewItem["Title"] = p2
+      reviewItem["Shoppinginfo"] = p3
 
-      reviewItem["comment"] = p4
+      reviewItem["Comment"] = p4
 
       if len(p5)>2:
-        reviewItem["helpNum"] = p5[1]
+        reviewItem["Helpful"] = p5[1]
       else:
-        reviewItem["helpNum"] = 0
+        reviewItem["Helpful"] = 0
   
 
-      # if len(review)>=7:
-      #     print("====================",helpfulNum)
-
-      #     reviewItem["helpfulNum"] = helpfulNum[0]
-      # else:
-      #     reviewItem["helpfulNum"] = 0
       DataList.append(reviewItem)
   return DataList
 data = get_data(s)
