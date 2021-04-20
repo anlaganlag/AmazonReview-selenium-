@@ -412,7 +412,7 @@ Read more
   """
 
 import re
-def get_data(d):
+def get_data(text):
   """相当于从筛选出所有本国评论字符串进行操作
         1.根据Report abuse进行分割，同时筛去最后为空的部分..
         2
@@ -427,9 +427,12 @@ def get_data(d):
 
   #选择的是所有的review...
   # xpathAllReviewXpath = 'div[@data-hook="review"]'
-  # xpathReviewCurCountryXpath =".//div[@class='a-section review aok-relative']"
+  # xpathReviewCurCountryXpath =
+  # .//div[@class='a-section review aok-relative cr-desktop-review-page-0']
+  # .//div[@class='a-section review aok-relative cr-desktop-review-page-0']
+
   # reviews = d.find_elements_by_xpath(xpathReviewCurCountryXpath)
-  s1=[i for  i in d.split("Report abuse") if len(i.strip())>10] #每个评论以Report abuse 分段，且去掉最后的空评论
+  s1=[i for  i in text.split("Report abuse") if len(i.strip())>10] #每个评论以Report abuse 分段，且去掉最后的空评论
   print(s1)
 
   for idx,review in enumerate(s1):
@@ -449,12 +452,10 @@ def get_data(d):
         reviewItem["Helpful"] = p5[1]
       else:
         reviewItem["Helpful"] = 0
-  
-
+      print(reviewItem)
       DataList.append(reviewItem)
+  print(DataList)
   return DataList
-data = get_data(s)
-print(data)
 
 
 

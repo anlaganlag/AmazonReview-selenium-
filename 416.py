@@ -1,4 +1,3 @@
-from selenium.webdriver.chrome
 from selenium.webdriver.chrome.options import Options  # 无界面
 from selenium.common.exceptions import TimeoutException
 from concurrent.futures import ThreadPoolExecutor
