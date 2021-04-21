@@ -151,7 +151,7 @@ if __name__ == '__main__':
         else:
             excelData_group = Task.list_of_groups(ListTaskUrl, (len(ListTaskUrl) // threadsNumber) + 1)  # 第二个参数是每个线程要执行的任务数
         #线程池
-        print(excelData_group)
+        print(excelData_group[0])
         spiderList = []
         with ThreadPoolExecutor(max_workers=threadsNumber) as t:
             for i in range(0,threadsNumber):
