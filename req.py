@@ -1,5 +1,4 @@
 import requests
-import json
 from lxml import etree
 
 def cleanse(s):
@@ -9,7 +8,8 @@ URL2 = 'https://www.amazon.com/hz/reviews-render/ajax/medley-filtered-reviews/ge
 URL3 = ' https://www.amazon.com/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt'
 body = {
     "language": "en_US",
-    "asin": "B07QQZDHMR",
+    # "asin": "B07QQZDHMR",
+    "asin": "B00B0O1BBW",
     "sortBy": "helpful",
     "scope": "reviewsAjax2",
 }
@@ -22,8 +22,8 @@ resText = cleanse(res.text)
 
 
 html_index = etree.HTML(resText)
-# with open("test0422.txt","w") as f:
-#     f.write(etree.tostring(html_index).decode())
+with open("test0422.txt","w") as f:
+    f.write(etree.tostring(html_index).decode())
 
 userName = html_index.xpath('//span[@class="a-profile-name"]/text()') #用户名
 # <a class="a-link-normal" title="4.0 out of 5 stars" 
@@ -36,10 +36,10 @@ reviewContent = html_index.xpath('//div[@class="a-expander-content reviewText re
 reviewImage= html_index.xpath('//img[@data-hook="review-image-tile"]/@data-src')
 
 # print(userName)
-# print(stars)
+print(stars)
 # print(title)
 # print(reviewDate)
-# print(helpful)
+print(helpful)
 # print(reviewContent)
 print(reviewImage)
 # print(etree.tostring(html_index).decode())
