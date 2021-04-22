@@ -1,0 +1,83 @@
+<html><body><h3 data-hook="dp-local-reviews-header" class="a-spacing-medium a-spacing-top-large">
+
+
+
+
+
+
+
+
+
+
+  Top reviews from the United States
+</h3></body></html><html><body><div id="R421MOKXHR7SI" data-hook="review" class="a-section review aok-relative"><div id="R421MOKXHR7SI-review-card" class="a-row a-spacing-none"><div id="customer_review-R421MOKXHR7SI" class="a-section celwidget"><div data-hook="genome-widget" class="a-row a-spacing-mini"><a href="/gp/profile/amzn1.account.AEWLOA6SORJEDWEM2S6XSBRY7TAQ/ref=cm_cr_othr_d_gw_tr?ie=UTF8" class="a-profile" data-a-size="small"><div aria-hidden="true" class="a-profile-avatar-wrapper"><div class="a-profile-avatar"><img src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" class="a-lazy-loaded" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/><noscript><img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/></noscript></div></div><div class="a-profile-content"><span class="a-profile-name">Dimitre</span></div></a></div><div class="a-row"><a class="a-link-normal" title="4.0 out of 5 stars" href="/gp/customer-reviews/R421MOKXHR7SI/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B00AAVEWA8"><i data-hook="review-star-rating" class="a-icon a-icon-star a-star-4 review-rating"><span class="a-icon-alt">4.0 out of 5 stars</span></i></a><span class="a-letter-space"/><a data-hook="review-title" class="a-size-base a-link-normal review-title a-color-base review-title-content a-text-bold" href="/gp/customer-reviews/R421MOKXHR7SI/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B00AAVEWA8">
+
+
+
+
+
+
+
+  
+  
+    <span>Four Stars</span>
+  
+</a></div><span data-hook="review-date" class="a-size-base a-color-secondary review-date">Reviewed in the United States on January 13, 2015</span><div class="a-row a-spacing-mini review-data review-format-strip"><span data-hook="avp-badge-linkless" class="a-size-mini a-color-state a-text-bold">Verified Purchase</span></div><div class="a-row a-spacing-small review-data"><span data-hook="review-body" class="a-size-base review-text"><div aria-live="polite" data-a-expander-name="review_text_read_more" data-a-expander-collapsed-height="300" class="a-expander-collapsed-height a-row a-expander-container a-expander-partial-collapse-container" style="max-height:300px"><div data-hook="review-collapsed" aria-expanded="false" class="a-expander-content reviewText review-text-content a-expander-partial-collapse-content">
+
+
+
+
+
+
+
+
+
+  
+  
+    <span>
+  Very good
+</span>
+  
+</div><div class="a-expander-header a-expander-partial-collapse-header"><div class="a-expander-content-fade"/><a href="javascript:void(0)" data-hook="expand-collapse-read-more-less" aria-label="Toggle full review text" data-action="a-expander-toggle" class="a-declarative" data-a-expander-toggle="{&quot;allowLinkDefault&quot;:true, &quot;expand_prompt&quot;:&quot;Read more&quot;, &quot;collapse_prompt&quot;:&quot;Read less&quot;}"><i class="a-icon a-icon-extender-expand"/><span class="a-expander-prompt">Read more</span></a></div></div></span></div><div data-hook="review-comments" class="a-row review-comments cr-vote-action-bar"><span class="cr-vote" data-hook="review-voting-widget">
+  <div class="cr-helpful-button aok-float-left">
+      <span class="a-button a-button-base"><span class="a-button-inner"><a href="https://www.amazon.com/ap/signin?openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB00AAVEWA8%2Fref%3Dcm_cr_othr_d_vote_lft%3Fie%3DUTF8%26voteInstanceId%3DR421MOKXHR7SI%26voteValue%3D1%26csrfT%3DgnpmprZmgWDfw%252FVgRSUmYnyqu71cwsbtwimLKgYAAAABAAAAAGCA8AdyYXcAAAAA%252B4kUEk%252F7iMGR3xPcX6iU%23R421MOKXHR7SI&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=usflex&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" data-hook="vote-helpful-button" class="a-button-text" role="button"><div class="cr-helpful-text">
+          Helpful</div>
+      </a></span></span></div>
+  </span><span class="cr-footer-line-height">
+        <span><i class="a-icon a-icon-text-separator" role="img" aria-label="|"/><span class="a-declarative" data-action="cr-popup" data-cr-popup="{&quot;width&quot;:&quot;580&quot;,&quot;title&quot;:&quot;ReportAbuse&quot;,&quot;url&quot;:&quot;/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gnpmprZmgWDfw%2FVgRSUmYnyqu71cwsbtwimLKgYAAAABAAAAAGCA8AdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R421MOKXHR7SI&amp;sessionId=142-1733363-7866148&quot;,&quot;height&quot;:&quot;380&quot;}"><a class="a-size-base a-link-normal a-color-secondary report-abuse-link a-text-normal" href="/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gnpmprZmgWDfw%2FVgRSUmYnyqu71cwsbtwimLKgYAAAABAAAAAGCA8AdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R421MOKXHR7SI&amp;sessionId=142-1733363-7866148">Report abuse</a></span></span></span>
+  </div></div></div></div></body></html><html><body><div id="R3GKA9D9679AZ7" data-hook="review" class="a-section review aok-relative"><div id="R3GKA9D9679AZ7-review-card" class="a-row a-spacing-none"><div id="customer_review-R3GKA9D9679AZ7" class="a-section celwidget"><div data-hook="genome-widget" class="a-row a-spacing-mini"><a href="/gp/profile/amzn1.account.AHB6PQ2ZLSYEYXMRSKCR2MOYMOPQ/ref=cm_cr_othr_d_gw_tr?ie=UTF8" class="a-profile" data-a-size="small"><div aria-hidden="true" class="a-profile-avatar-wrapper"><div class="a-profile-avatar"><img src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" class="a-lazy-loaded" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/><noscript><img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/></noscript></div></div><div class="a-profile-content"><span class="a-profile-name">Natali</span></div></a></div><div class="a-row"><a class="a-link-normal" title="4.0 out of 5 stars" href="/gp/customer-reviews/R3GKA9D9679AZ7/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B00AAVEWA8"><i data-hook="review-star-rating" class="a-icon a-icon-star a-star-4 review-rating"><span class="a-icon-alt">4.0 out of 5 stars</span></i></a><span class="a-letter-space"/><a data-hook="review-title" class="a-size-base a-link-normal review-title a-color-base review-title-content a-text-bold" href="/gp/customer-reviews/R3GKA9D9679AZ7/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B00AAVEWA8">
+
+
+
+
+
+
+
+  
+  
+    <span>good</span>
+  
+</a></div><span data-hook="review-date" class="a-size-base a-color-secondary review-date">Reviewed in the United States on February 27, 2013</span><div class="a-row a-spacing-mini review-data review-format-strip"><span data-hook="avp-badge-linkless" class="a-size-mini a-color-state a-text-bold">Verified Purchase</span></div><div class="a-row a-spacing-small review-data"><span data-hook="review-body" class="a-size-base review-text"><div aria-live="polite" data-a-expander-name="review_text_read_more" data-a-expander-collapsed-height="300" class="a-expander-collapsed-height a-row a-expander-container a-expander-partial-collapse-container" style="max-height:300px"><div data-hook="review-collapsed" aria-expanded="false" class="a-expander-content reviewText review-text-content a-expander-partial-collapse-content">
+
+
+
+
+
+
+
+
+
+  
+  
+    <span>
+  Good cover. All relevant photographs. Not handled very edge - not always smooth pouring edge. Price matches the quality.  Thank you.
+</span>
+  
+</div><div class="a-expander-header a-expander-partial-collapse-header"><div class="a-expander-content-fade"/><a href="javascript:void(0)" data-hook="expand-collapse-read-more-less" aria-label="Toggle full review text" data-action="a-expander-toggle" class="a-declarative" data-a-expander-toggle="{&quot;allowLinkDefault&quot;:true, &quot;expand_prompt&quot;:&quot;Read more&quot;, &quot;collapse_prompt&quot;:&quot;Read less&quot;}"><i class="a-icon a-icon-extender-expand"/><span class="a-expander-prompt">Read more</span></a></div></div></span></div><div data-hook="review-comments" class="a-row review-comments cr-vote-action-bar"><span class="cr-vote" data-hook="review-voting-widget">
+  <div class="cr-helpful-button aok-float-left">
+      <span class="a-button a-button-base"><span class="a-button-inner"><a href="https://www.amazon.com/ap/signin?openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB00AAVEWA8%2Fref%3Dcm_cr_othr_d_vote_lft%3Fie%3DUTF8%26voteInstanceId%3DR3GKA9D9679AZ7%26voteValue%3D1%26csrfT%3Dgug8I9I3b2bSEdMiEDg8liuKWqYLXUK3xny9dtMAAAABAAAAAGCA8AdyYXcAAAAA%252B4kUEk%252F7iMGR3xPcX6iU%23R3GKA9D9679AZ7&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=usflex&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" data-hook="vote-helpful-button" class="a-button-text" role="button"><div class="cr-helpful-text">
+          Helpful</div>
+      </a></span></span></div>
+  </span><span class="cr-footer-line-height">
+        <span><i class="a-icon a-icon-text-separator" role="img" aria-label="|"/><span class="a-declarative" data-action="cr-popup" data-cr-popup="{&quot;width&quot;:&quot;580&quot;,&quot;title&quot;:&quot;ReportAbuse&quot;,&quot;url&quot;:&quot;/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gug8I9I3b2bSEdMiEDg8liuKWqYLXUK3xny9dtMAAAABAAAAAGCA8AdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R3GKA9D9679AZ7&amp;sessionId=142-1733363-7866148&quot;,&quot;height&quot;:&quot;380&quot;}"><a class="a-size-base a-link-normal a-color-secondary report-abuse-link a-text-normal" href="/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gug8I9I3b2bSEdMiEDg8liuKWqYLXUK3xny9dtMAAAABAAAAAGCA8AdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R3GKA9D9679AZ7&amp;sessionId=142-1733363-7866148">Report abuse</a></span></span></span>
+  </div></div></div></div></body></html>
