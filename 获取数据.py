@@ -12,36 +12,43 @@ import re
 from lxml import etree
 #简单的解析html数据..
 def get_simple_data(item,html):
-    html_x = etree.HTML(html)
     #获取评论Id
     ReviewId=html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
     print("     ReviewId是:",ReviewId)
-
+    item ["ReviewId"] = ReviewId
     #获取用户名、
     CustomName=html_x.xpath("//span[@class='a-profile-name']/text()")[0]
-
-
+    item ["CustomName"] = CustomName
     #获取评分
     ReviewStars= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
     print("    ",CustomName,"给出的评分是",ReviewStars)
+    item ["ReviewStars"] = ReviewStars
 
     #获取标题
     ReviewTitle=html_x.xpath("//a[@data-hook='review-title']/span/text()")[0]
     print("    ","评论的标题是：",ReviewTitle)
+    item ["ReviewTitle"] = ReviewTitle
 
     #获取评论的日期
     ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
     print("    ","评论时间：",ReviewDate)
+    item ["ReviewDate"] = ReviewDate
 
     #获取有用数的日期
     HelpfulNum=html_x.xpath("//span[@data-hook='helpful-vote-statement']/text()")[0].split(" ")[0]
     print("    ","好评数：",HelpfulNum)
+    item ["HelpfulNum"] = HelpfulNum
+
     #获取评论
     ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0]
     print("    ","评论：",ReviewText)
+    item ["ReviewText"] = ReviewText
+
     #图片
     ReviewMedia=html_x.xpath("//img[@class='cr-lightbox-image-thumbnail']/@src")
     print("    ","多媒体信息：",ReviewMedia)
+    item ["ReviewMedia"] = ReviewMedia
+
 
 class CategorySpider():
     def __init__(self):
@@ -73,105 +80,33 @@ class CategorySpider():
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         }
         body = {
-        "asin": f"{item['ASIN']}",
+        "asin": f"{item['Asin']}",
         "sortBy": "helpful",
         "scope": "reviewsAjax2",
         }
         try:
-            item['taskStartTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            res_item = requests.get(url, headers=headers)
-            if len(res_item.text) > 10000:
-                self.get_data(item, res_item.text)
-            else:
-                self.handle_Verification_Code(item)
+            item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            r = requests.post(url,headers=headers,data=body)
+            r.encoding='utf-8'
+            # print(r.text)
+            self.get_data(item, r.text)
         except Exception as e:
             print(f'error:{e}')
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
+
     def get_data(self, item, codeText):  #
         DataList = []
-        pattern_goodsStar = re.compile(r'\d+.\d+')
-        if len(codeText) > 10000:
-            html_index = etree.HTML(codeText)
-            goodsList = html_index.xpath('.//li[@class="zg-item-immersion"]')
+        myLIST=codeText.split("&&&")
+        for msg in myLIST[3:-5]:
+            itemObj=msg.replace("\n","")
+            html=eval(itemObj)[2]
+            html_x = etree.HTML(html)
+            self.get_simple_data(item,html_x)
+            
+            print("DataList:",DataList,"item",item)
+            # self.SaveAtDataDb(DataList, item)  # 每抓取一页数据就入爬虫数据库一次
 
-            cetegorys = html_index.xpath('.//li[@class="zg_browseUp"]/a/text()')
-            cetegoryPath = ""
-            for cetegory in cetegorys[1:]:  # [1:]跳过第一项
-                cetegoryPath += cetegory + "/"
-            cetegorySelected = html_index.xpath('.//span[@class="zg_selected"]/text()')
-            if len(cetegorySelected) > 0:
-                cetegorySelected = cetegorySelected[0].strip()
-            else:
-                cetegorySelected = ""
-            item['cetegory'] = cetegoryPath + cetegorySelected
-
-            item['site'] = self.GetSite(item['taskLink'])  # 判断站点
-
-            for goods in goodsList:
-                item_goods = {}
-                goodsRanking = goods.xpath('.//span[@class="zg-badge-text"]/text()')[0].strip('#')
-                try:
-                    goodsTitle = goods.xpath('.//a[@class="a-link-normal"]/div/text()')[0].replace("\n", "").strip()
-                except:
-                    goodsTitle = ""
-                try:
-                    Link = goods.xpath('.//span[@class="aok-inline-block zg-item"]/a/@href')[0]
-                except:
-                    continue
-                try:
-                    goodsStar = goods.xpath('.//i/span[@class="a-icon-alt"]/text()')[0]
-                    goodsStar = goodsStar.replace(',', '.')
-                    goodsStar = pattern_goodsStar.findall(goodsStar)[0]
-                except:
-                    goodsStar = ""
-                try:
-                    goodsCommentNum = goods.xpath('.//a[@class="a-size-small a-link-normal"]/text()')[0].replace(
-                        '.', '').replace(
-                        ',', "").replace('\xa0', '')
-                except:
-                    goodsCommentNum = ""
-                try:
-                    goodsPriceList = goods.xpath('.//span[@class="p13n-sc-price"]/text()')
-                    if len(goodsPriceList) == 1:
-                        goodsPrice = goodsPriceList[0].replace('\xa0', '')
-                    elif len(goodsPriceList) > 1:
-                        goodsPrice = goodsPriceList[0].replace('\xa0', '') + " - " + goodsPriceList[1].replace('\xa0',
-                                                                                                               '')
-                    else:
-                        goodsPrice = ""
-                except:
-                    goodsPrice = ""
-
-                holdLink = item['taskLink']
-                headLink = holdLink[:holdLink.index('/', 10)]
-                goodsLink = headLink + Link
-                item_goods['goodsTitle'] = goodsTitle.replace("'", "''")
-                item_goods["site"] = item['site']
-                if item_goods["site"] != "JP":
-                    item_goods['goodsBrand'] = item_goods['goodsTitle'].split(" ")[0]
-                else:
-                    item_goods['goodsBrand'] = ""
-                item_goods['cetegory'] = item['cetegory'].replace("'", "''")
-                item_goods['goodsRanking'] = goodsRanking
-                item_goods['goodsStar'] = goodsStar
-                item_goods['goodsCommentNum'] = goodsCommentNum
-                item_goods['goodsPrice'] = goodsPrice
-                Asin = Link.split("/")[3]
-                if len(Asin) == 10:
-                    item_goods["goodsAsin"] = Asin
-                else:
-                    item_goods["goodsAsin"] = Link.split("/")[2]
-                item_goods['goodsLink'] = goodsLink
-                print(item_goods)
-                DataList.append(item_goods)
-            self.SaveAtDataDb(DataList, item)  # 每抓取一页数据就入爬虫数据库一次
-
-            next_url = html_index.xpath('.//li[@class="a-last"]/a/@href')
-            if len(next_url) > 0:
-                next_url = next_url[0]
-                item['taskLink'] = item['taskLink'] + '&pg=2'
-                self.Scheduling_task(item, next_url)
 
     def handle_Verification_Code(self, dictData):
         d = self.webdriverSingle()
@@ -244,23 +179,7 @@ class CategorySpider():
         connect.commit()
         connect.close()  # 关闭数据库
 
-    def GetSite(self, url):
-        if 'https://www.amazon.com/' in url:
-            return 'US'
-        elif 'https://www.amazon.co.uk/' in url:
-            return 'UK'
-        elif 'https://www.amazon.ca/' in url:
-            return 'CA'
-        elif 'https://www.amazon.fr/' in url:
-            return 'FR'
-        elif 'https://www.amazon.de/' in url:
-            return 'DE'
-        elif 'https://www.amazon.es/' in url:
-            return 'ES'
-        elif 'https://www.amazon.it/' in url:
-            return 'IT'
-        else:
-            return 'JP'
+
 
 
 def Scheduling_task(item,url):
@@ -281,7 +200,7 @@ def Scheduling_task(item,url):
     except Exception as e:
         print(f'error:{e}')
         logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
-def get_data(self,item,codeText):
+# def get_data(self,item,codeText):
     DataList = []
     # resText = cleanse(res.text)
     myLIST=codeText.split("&&&")
@@ -331,7 +250,7 @@ def get_data(self,item,codeText):
 # url = 'https://www.amazon.com/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt'
 # item={"ASIN":"B07J63HQ8W"}
 
-    def SaveAtDataDb(self, DataList, item):
+    # def SaveAtDataDb(self, DataList, item):
         connect = pymssql.connect('192.168.0.228', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
         cursor = connect.cursor()  # 创建执行sql语句对象
         headSql = "INSERT INTO TbReptileDateToAmazonCategory ([site],[Ranking],[Asin],[Title],[Brand],[Cetegory],[Price],[CommentNum],[Star],[PageLink],[TaskLink]) VALUES"
@@ -358,9 +277,9 @@ if __name__ == '__main__':
     cursor.execute(Sql)
     rows = cursor.fetchall()
     connect.close()  # 关闭数据库
-
+    print(rows[61430:61432])
     ListTaskUrl = []  # 存放数据库任务
-    for taskid,Site,Asin,StartScrping,state in rows:
+    for taskid,Site,Asin,StartScrping,state in rows[61430:61432]:
         itemTask = {}
         itemTask['taskid'] = taskid
         itemTask['Asin'] = Asin
@@ -376,7 +295,7 @@ if __name__ == '__main__':
             item['taskLink'] = taskLink['taskurl']  # 直接拿到任务地址的索引
             item['Asin'] = taskLink['Asin']
             item['Site'] = taskLink['Site']
-
+            print(item,item['taskLink'])
             task = t.submit(spider.Scheduling_task, item, item['taskLink'])
     end_time = time.perf_counter()
     logging.warning(f'类目爬虫任务已结束!!  本次执行任务数:{len(ListTaskUrl)} -- {datetime.datetime.now()}')
