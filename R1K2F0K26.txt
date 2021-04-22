@@ -1,0 +1,107 @@
+<html><body><div id="R1K2F0K260Y8UW" data-hook="review" class="a-section review aok-relative"><div id="R1K2F0K260Y8UW-review-card" class="a-row a-spacing-none"><div id="customer_review-R1K2F0K260Y8UW" class="a-section celwidget"><div data-hook="genome-widget" class="a-row a-spacing-mini"><a href="/gp/profile/amzn1.account.AHAI6Y5FLB5MIYKB3RUOJWQ25AQQ/ref=cm_cr_othr_d_gw_tr?ie=UTF8" class="a-profile" data-a-size="small"><div aria-hidden="true" class="a-profile-avatar-wrapper"><div class="a-profile-avatar"><img src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" class="a-lazy-loaded" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/><noscript><img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"/></noscript></div></div><div class="a-profile-content"><span class="a-profile-name">Rosita Rockera</span></div></a></div><div class="a-row"><a class="a-link-normal" title="4.0 out of 5 stars" href="/gp/customer-reviews/R1K2F0K260Y8UW/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B07J63HQ8W"><i data-hook="review-star-rating" class="a-icon a-icon-star a-star-4 review-rating"><span class="a-icon-alt">4.0 out of 5 stars</span></i></a><span class="a-letter-space"/><a data-hook="review-title" class="a-size-base a-link-normal review-title a-color-base review-title-content a-text-bold" href="/gp/customer-reviews/R1K2F0K260Y8UW/ref=cm_cr_othr_d_rvw_ttl?ie=UTF8&amp;ASIN=B07J63HQ8W">
+
+
+
+
+
+
+
+  
+  
+    <span>Possible deadly carrots</span>
+  
+</a></div><span data-hook="review-date" class="a-size-base a-color-secondary review-date">Reviewed in the United States on August 14, 2020</span><div class="a-row a-spacing-mini review-data review-format-strip"><span data-hook="avp-badge-linkless" class="a-size-mini a-color-state a-text-bold">Verified Purchase</span></div><div class="a-row a-spacing-small review-data"><span data-hook="review-body" class="a-size-base review-text"><div aria-live="polite" data-a-expander-name="review_text_read_more" data-a-expander-collapsed-height="300" class="a-expander-collapsed-height a-row a-expander-container a-expander-partial-collapse-container" style="max-height:300px"><div data-hook="review-collapsed" aria-expanded="false" class="a-expander-content reviewText review-text-content a-expander-partial-collapse-content">
+
+
+
+
+
+
+
+
+
+  
+  
+    <span>
+  The juicer arrived without a box. Just a shipping label slapped on the original box but it appears to be all in tact. There is no user guide and after reading some of the labels I can see why. This product is made in China. The English is off but after reading it a few times I got it. There&#8217;s another label on the lid that I removed before taking pics that is hard to understand. After tinkering with it I was able to assemble all but one piece pictured. I made my first juice consisting of carrots and apples. Well the carrots shot like a firecracker when I pushed the plunger. Scared me half to death. I decided to go slow and it was ok. I don&#8217;t think the lid broke but it may not survive another hard push. The apples were much easier and not as traumatic. The juice came out delicious with quite a bit of liquid compared to an older one I was using last week. Not a lot of foam either. Clean up wasn&#8217;t so bad. Love the brush it comes with.  I will keep it until it breaks. I&#8217;m not sure it will survive another carrot.
+</span>
+  
+</div><div class="a-expander-header a-expander-partial-collapse-header"><div class="a-expander-content-fade"/><a href="javascript:void(0)" data-hook="expand-collapse-read-more-less" aria-label="Toggle full review text" data-action="a-expander-toggle" class="a-declarative" data-a-expander-toggle="{&quot;allowLinkDefault&quot;:true, &quot;expand_prompt&quot;:&quot;Read more&quot;, &quot;collapse_prompt&quot;:&quot;Read less&quot;}"><i class="a-icon a-icon-extender-expand"/><span class="a-expander-prompt">Read more</span></a></div></div></span></div><div class="a-popover-preload" id="a-popover-R1K2F0K260Y8UW_gallerySection_main">
+
+
+
+
+
+
+
+
+
+<div id="R1K2F0K260Y8UW_image_popover" data-hook="image-popover" class="a-section cr-lightbox-popover-container">
+    <div class="cr-lightbox-image-viewer">
+        <div class="cr-lightbox-main-image-container">
+            <img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/transparent-pixel._V192234675_.gif" class="cr-lightbox-main-image"/>
+        </div>
+        <div class="cr-lightbox-navigator-container cr-lightbox-navigator-container__back">
+            <div class="cr-lightbox-navigator-button cr-lightbox-navigator-button__back">
+            </div>
+        </div>
+        <div class="cr-lightbox-navigator-container cr-lightbox-navigator-container__next">
+            <div class="cr-lightbox-navigator-button cr-lightbox-navigator-button__next">
+            </div>
+        </div>
+   </div>
+    <div class="a-section cr-lightbox-review-information">
+        <div class="a-section a-spacing-mini">
+            <i class="a-icon a-icon-star a-star-4"><span class="a-icon-alt">4.0 out of 5 stars</span></i>
+            <span class="a-size-base a-text-bold">
+                Possible deadly carrots
+            </span>
+            <br/>
+            <span class="a-size-small a-color-secondary">
+            
+              
+                  By Rosita Rockera on August 14, 2020
+              
+              
+            
+
+
+            </span>
+        </div>
+        <span class="a-size-base">
+            The juicer arrived without a box. Just a shipping label slapped on the original box but it appears to be all in tact. There is no user guide and after reading some of the labels I can see why. This product is made in China. The English is off but after reading it a few times I got it. There&#8217;s another label on the lid that I removed before taking pics that is hard to understand. After tinkering with it I was able to assemble all but one piece pictured. I made my first juice consisting of carrots and apples. Well the carrots shot like a firecracker when I pushed the plunger. Scared me half to death. I decided to go slow and it was ok. I don&#8217;t think the lid broke but it may not survive another hard push. The apples were much easier and not as traumatic. The juice came out delicious with quite a bit of liquid compared to an older one I was using last week. Not a lot of foam either. Clean up wasn&#8217;t so bad. Love the brush it comes with.  I will keep it until it breaks. I&#8217;m not sure it will survive another carrot.
+        </span>
+        <div class="a-section a-spacing-top-base">
+            <span class="a-size-medium a-color-secondary">
+                Images in this review
+            </span>
+            <div class="a-section a-spacing-top-mini cr-lightbox-image-thumbnails">
+                
+                    <img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/61DLpydsq2L._SY88.jpg" class="cr-lightbox-image-thumbnail"/>
+                
+                    <img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/61kWKYyfUiL._SY88.jpg" class="cr-lightbox-image-thumbnail"/>
+                
+                    <img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/71rozg6CD5L._SY88.jpg" class="cr-lightbox-image-thumbnail"/>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><div id="R1K2F0K260Y8UW_imageSection_main" class="a-section a-spacing-medium review-image-container"><div class="review-image-tile-section" data-reviewid="R1K2F0K260Y8UW">
+       <span class="a-declarative" data-action="a-modal" data-a-modal="{&quot;name&quot;:&quot;R1K2F0K260Y8UW_gallerySection_main&quot;}" id="R1K2F0K260Y8UW-0"><a href="javascript:void(0)" class="a-popover-trigger a-declarative"><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" data-hook="review-image-tile" class="review-image-tile a-lazy-loaded" height="88" width="100%" data-src="https://images-na.ssl-images-amazon.com/images/I/61DLpydsq2L._SY88.jpg"/><noscript><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/61DLpydsq2L._SY88.jpg" height="88" width="100%"/></noscript><i class="a-icon a-icon-popover"/></a></span><span class="a-declarative" data-action="a-modal" data-a-modal="{&quot;name&quot;:&quot;R1K2F0K260Y8UW_gallerySection_main&quot;}" id="R1K2F0K260Y8UW-1"><a href="javascript:void(0)" class="a-popover-trigger a-declarative"><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" data-hook="review-image-tile" class="review-image-tile a-lazy-loaded" height="88" width="100%" data-src="https://images-na.ssl-images-amazon.com/images/I/61kWKYyfUiL._SY88.jpg"/><noscript><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/61kWKYyfUiL._SY88.jpg" height="88" width="100%"/></noscript><i class="a-icon a-icon-popover"/></a></span><span class="a-declarative" data-action="a-modal" data-a-modal="{&quot;name&quot;:&quot;R1K2F0K260Y8UW_gallerySection_main&quot;}" id="R1K2F0K260Y8UW-2"><a href="javascript:void(0)" class="a-popover-trigger a-declarative"><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/G/01/x-locale/common/grey-pixel.gif" data-hook="review-image-tile" class="review-image-tile a-lazy-loaded" height="88" width="100%" data-src="https://images-na.ssl-images-amazon.com/images/I/71rozg6CD5L._SY88.jpg"/><noscript><img alt="Customer image" src="https://images-na.ssl-images-amazon.com/images/I/71rozg6CD5L._SY88.jpg" height="88" width="100%"/></noscript><i class="a-icon a-icon-popover"/></a></span></div>
+</div><script>
+        P.when('A', 'cr-image-popover-controller').execute(function(A, imagePopoverController) {
+          A.on("a:popover:beforeShow:R1K2F0K260Y8UW_gallerySection_main", function(data) {
+            imagePopoverController.initImagePopover("R1K2F0K260Y8UW", "[https://images-na.ssl-images-amazon.com/images/I/61DLpydsq2L.jpg, https://images-na.ssl-images-amazon.com/images/I/61kWKYyfUiL.jpg, https://images-na.ssl-images-amazon.com/images/I/71rozg6CD5L.jpg]", data);
+          });
+        });
+    </script>
+<div data-hook="review-comments" class="a-row review-comments cr-vote-action-bar"><span class="cr-vote" data-hook="review-voting-widget">
+  <div class="a-row a-spacing-small"><span data-hook="helpful-vote-statement" class="a-size-base a-color-tertiary cr-vote-text">25 people found this helpful</span></div><div class="cr-helpful-button aok-float-left">
+      <span class="a-button a-button-base"><span class="a-button-inner"><a href="https://www.amazon.com/ap/signin?openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB07J63HQ8W%2Fref%3Dcm_cr_othr_d_vote_lft%3Fie%3DUTF8%26voteInstanceId%3DR1K2F0K260Y8UW%26voteValue%3D1%26csrfT%3DgpU8MVavcCzR9zB%252F7xdMnUvLGSkzj0Lu%252Bpa0zI8AAAABAAAAAGCBHmdyYXcAAAAA%252B4kUEk%252F7iMGR3xPcX6iU%23R1K2F0K260Y8UW&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=usflex&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0" data-hook="vote-helpful-button" class="a-button-text" role="button"><div class="cr-helpful-text">
+          Helpful</div>
+      </a></span></span></div>
+  </span><span class="cr-footer-line-height">
+        <span><i class="a-icon a-icon-text-separator" role="img" aria-label="|"/><span class="a-declarative" data-action="cr-popup" data-cr-popup="{&quot;width&quot;:&quot;580&quot;,&quot;title&quot;:&quot;ReportAbuse&quot;,&quot;url&quot;:&quot;/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gpU8MVavcCzR9zB%2F7xdMnUvLGSkzj0Lu%2Bpa0zI8AAAABAAAAAGCBHmdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R1K2F0K260Y8UW&amp;sessionId=131-3362285-1415547&quot;,&quot;height&quot;:&quot;380&quot;}"><a class="a-size-base a-link-normal a-color-secondary report-abuse-link a-text-normal" href="/hz/reviews-render/report-abuse?ie=UTF8&amp;voteDomain=Reviews&amp;ref=cm_cr_othr_d_report&amp;csrfT=gpU8MVavcCzR9zB%2F7xdMnUvLGSkzj0Lu%2Bpa0zI8AAAABAAAAAGCBHmdyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU&amp;entityId=R1K2F0K260Y8UW&amp;sessionId=131-3362285-1415547">Report abuse</a></span></span></span>
+  </div></div></div></div></body></html>

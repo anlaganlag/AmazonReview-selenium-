@@ -28,22 +28,43 @@ def Scheduling_task(item,url):
     myLIST=json_text.split("&&&")
     for msg in myLIST[3:-5]:
         itemObj=msg.replace("\n","")
-        html=list(eval(itemObj))[2]
+        html=eval(itemObj)[2]
         html_x = etree.HTML(html)
-        with open(f"{list(eval(itemObj))[2][9:15]}.txt","w") as f:
+        with open(f"{list(eval(itemObj))[2][9:18]}.txt","w") as f:
             f.write(etree.tostring(html_x).decode())
         try:
             #获取用户名、
-            pr_name=html_x.xpath("//span[@class='a-profile-name']/text()")[0]
+            CustomName=html_x.xpath("//span[@class='a-profile-name']/text()")[0]
+            
             #获取评分
-            pf= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
-            print("    ",pr_name,"给出的评分是",pf)
+            ReviewStars= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
+            print("    ",CustomName,"给出的评分是",ReviewStars)
+
+            #获取标题
+            ReviewTitle=html_x.xpath("//a[@data-hook='review-title']/span/text()")[0]
+            print("    ","评论的标题是：",ReviewTitle)
+
+            #获取评论的日期
+            ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
+            print("    ","评论时间：",ReviewDate)
+
+            #获取有用数的日期
+            HelpfulNum=html_x.xpath("//span[@data-hook='helpful-vote-statement']/text()")[0].split(" ")[0]
+            print("    ","好评数：",HelpfulNum)
+            #获取评论
+            ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0]
+            print("    ","评论：",ReviewText)
+            #图片
+            ReviewMedia=html_x.xpath("//img[@class='cr-lightbox-image-thumbnail']/@src")
+            print("    ","图片：",ReviewMedia)
+
+
         except Exception as inst:
             print(type(inst))    # the exception instance
             print(inst.args)     # arguments stored in .args
             print(inst)
 url = 'https://www.amazon.com/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt'
-item={"ASIN":"B00AAVEWA8"}
+item={"ASIN":"B07J63HQ8W"}
 
 Scheduling_task(item,url)
 
