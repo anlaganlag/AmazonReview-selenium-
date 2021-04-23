@@ -1,0 +1,202 @@
+2021-04-23 10:23:40,303 - C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py[line:514] - WARNING: Certificate did not match expected hostname: www.amazon.us. Certificate: {'subject': ((('countryName', 'GB'),), (('localityName', 'London'),), (('organizationName', 'Nom-IQ LTD'),), (('commonName', '*.comlaude.com'),)), 'issuer': ((('countryName', 'US'),), (('organizationName', 'DigiCert Inc'),), (('organizationalUnitName', 'www.digicert.com'),), (('commonName', 'GeoTrust RSA CA 2018'),)), 'version': 3, 'serialNumber': '04C4627CA973AC336AD05FFA96152058', 'notBefore': 'Sep  1 00:00:00 2020 GMT', 'notAfter': 'Oct  3 00:00:00 2021 GMT', 'subjectAltName': (('DNS', '*.comlaude.com'), ('DNS', 'comlaude.com')), 'OCSP': ('http://status.geotrust.com',), 'caIssuers': ('http://cacerts.geotrust.com/GeoTrustRSACA2018.crt',), 'crlDistributionPoints': ('http://cdp.geotrust.com/GeoTrustRSACA2018.crl',)}
+2021-04-23 11:25:47,460 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:56] - ERROR: name 'items' is not defined,错误所在行数53 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:25:47,463 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:229] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:25:47.463774
+2021-04-23 11:25:47,463 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 总耗时8.094910800000001
+2021-04-23 11:25:47,463 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: ============================END===================================
+2021-04-23 11:26:12,719 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:229] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:26:12.719748
+2021-04-23 11:26:12,719 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 总耗时2.1127719999999997
+2021-04-23 11:26:12,719 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: ============================END===================================
+2021-04-23 11:28:21,160 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:28:21.160018
+2021-04-23 11:28:21,160 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: 总耗时2.3733173
+2021-04-23 11:28:21,161 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: ============================END===================================
+2021-04-23 11:28:48,066 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:28:48.066694
+2021-04-23 11:28:48,067 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: 总耗时1.9566168
+2021-04-23 11:28:48,067 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: ============================END===================================
+2021-04-23 11:29:57,138 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:229] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:29:57.138054
+2021-04-23 11:29:57,139 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 总耗时1.9336837999999998
+2021-04-23 11:29:57,139 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: ============================END===================================
+2021-04-23 11:31:05,992 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:229] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:31:05.991285
+2021-04-23 11:31:05,992 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 总耗时1.850886
+2021-04-23 11:31:05,992 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: ============================END===================================
+2021-04-23 11:32:58,750 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:230] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:32:58.749319
+2021-04-23 11:32:58,750 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:231] - WARNING: 总耗时3.5900771000000002
+2021-04-23 11:32:58,750 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: ============================END===================================
+2021-04-23 11:54:10,604 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:10,615 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:10,617 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:10,621 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:54:10.621897
+2021-04-23 11:54:10,621 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:233] - WARNING: 总耗时1.120549
+2021-04-23 11:54:10,621 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:234] - WARNING: ============================END===================================
+2021-04-23 11:54:32,330 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:32,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:32,344 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:32,350 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:54:32.350418
+2021-04-23 11:54:32,351 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:233] - WARNING: 总耗时1.0961647
+2021-04-23 11:54:32,351 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:234] - WARNING: ============================END===================================
+2021-04-23 11:54:54,379 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:54,392 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:54,394 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:108] - ERROR: list index out of range,错误所在行数92 --地址:https://www.amazon.com/dp/B00A9H3K7E
+2021-04-23 11:54:54,398 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:232] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 11:54:54.398995
+2021-04-23 11:54:54,399 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:233] - WARNING: 总耗时1.1029870000000002
+2021-04-23 11:54:54,399 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:234] - WARNING: ============================END===================================
+2021-04-23 12:10:07,482 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:10:07.482636
+2021-04-23 12:10:07,483 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.1257578000000001
+2021-04-23 12:10:07,483 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:11:17,442 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:0 -- 2021-04-23 12:11:17.442888
+2021-04-23 12:11:17,442 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时0.0007390999999999925
+2021-04-23 12:11:17,442 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:11:31,481 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:0 -- 2021-04-23 12:11:31.481532
+2021-04-23 12:11:31,482 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时0.000843500000000108
+2021-04-23 12:11:31,482 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:11:51,783 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:0 -- 2021-04-23 12:11:51.783650
+2021-04-23 12:11:51,784 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时0.0006829999999999892
+2021-04-23 12:11:51,784 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:12:04,684 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:0 -- 2021-04-23 12:12:04.683141
+2021-04-23 12:12:04,684 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时0.0007432000000000549
+2021-04-23 12:12:04,684 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:12:49,808 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:12:49.808180
+2021-04-23 12:12:49,808 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.094091
+2021-04-23 12:12:49,808 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:13:46,088 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:13:46.088789
+2021-04-23 12:13:46,089 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.2069662
+2021-04-23 12:13:46,089 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:14:04,114 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:14:04.114880
+2021-04-23 12:14:04,115 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.1252881000000001
+2021-04-23 12:14:04,115 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:15:26,747 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:15:26.747767
+2021-04-23 12:15:26,748 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.157651
+2021-04-23 12:15:26,748 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 12:23:44,153 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:23:44.153938
+2021-04-23 12:23:44,153 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时12.697837100000001
+2021-04-23 12:23:44,153 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 12:28:19,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 12:28:19.342137
+2021-04-23 12:28:19,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时1.7234591
+2021-04-23 12:28:19,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 13:10:03,577 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 13:10:03.577334
+2021-04-23 13:10:03,577 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时1.3086458
+2021-04-23 13:10:03,577 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 13:10:58,946 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 13:10:58.946828
+2021-04-23 13:10:58,946 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: 总耗时3.7795200000000007
+2021-04-23 13:10:58,946 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:239] - WARNING: ============================END===================================
+2021-04-23 13:18:48,341 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 13:18:48.341694
+2021-04-23 13:18:48,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时1.8212679999999999
+2021-04-23 13:18:48,342 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 13:19:36,288 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:1 -- 2021-04-23 13:19:36.288266
+2021-04-23 13:19:36,288 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时1.0867157
+2021-04-23 13:19:36,288 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 13:20:34,648 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AKDECZQ
+2021-04-23 13:20:36,074 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AKDEO7C
+2021-04-23 13:20:36,102 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AKDEMEM
+2021-04-23 13:20:36,473 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AKDW6U4
+2021-04-23 13:20:36,891 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AKDWJBA
+2021-04-23 13:20:38,025 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00AQX4TU8
+2021-04-23 13:20:43,812 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0MLTKC
+2021-04-23 13:20:55,028 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0N8HVK
+2021-04-23 13:20:55,120 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0N8I1O
+2021-04-23 13:20:55,953 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0N8JIQ
+2021-04-23 13:20:56,107 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0N8IK0
+2021-04-23 13:20:57,985 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0O17QQ
+2021-04-23 13:20:59,151 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0O18BK
+2021-04-23 13:20:59,202 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00B0O1BIU
+2021-04-23 13:21:10,183 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CNRD0O6
+2021-04-23 13:21:13,199 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CO6CRH2
+2021-04-23 13:21:17,307 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSM912G
+2021-04-23 13:21:19,239 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSM93PG
+2021-04-23 13:21:26,798 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSOMNTM
+2021-04-23 13:21:27,280 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSPFJLA
+2021-04-23 13:21:31,829 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSUUP6E
+2021-04-23 13:21:32,845 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSUUSCU
+2021-04-23 13:21:35,641 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00DE8R2QA
+2021-04-23 13:21:35,720 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00DE8R3KU
+2021-04-23 13:21:35,948 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00DE8R5G2
+2021-04-23 13:21:36,178 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00CSW4860
+2021-04-23 13:21:36,466 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00DE8R22O
+2021-04-23 13:21:43,539 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RV9UA
+2021-04-23 13:21:45,111 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVBT4
+2021-04-23 13:21:46,330 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVOXW
+2021-04-23 13:21:46,371 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVPSQ
+2021-04-23 13:21:46,714 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVRR0
+2021-04-23 13:21:46,715 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVTFA
+2021-04-23 13:21:47,226 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RW080
+2021-04-23 13:21:47,370 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RVVIA
+2021-04-23 13:21:47,542 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RW10M
+2021-04-23 13:21:47,581 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RW1YS
+2021-04-23 13:21:49,105 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RW9U4
+2021-04-23 13:21:50,217 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWD3C
+2021-04-23 13:21:51,050 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWEEK
+2021-04-23 13:21:51,294 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWEV8
+2021-04-23 13:21:52,080 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWGCA
+2021-04-23 13:21:53,179 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWIB4
+2021-04-23 13:21:53,394 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWJ40
+2021-04-23 13:21:54,422 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWK58
+2021-04-23 13:21:55,980 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWN28
+2021-04-23 13:21:56,102 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RWNI2
+2021-04-23 13:22:00,463 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RX08Y
+2021-04-23 13:22:04,655 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RXF9S
+2021-04-23 13:22:07,961 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZLCW
+2021-04-23 13:22:08,810 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZU46
+2021-04-23 13:22:09,655 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZX4I
+2021-04-23 13:22:09,662 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZW9Y
+2021-04-23 13:22:09,731 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZY2Y
+2021-04-23 13:22:09,856 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZYV0
+2021-04-23 13:22:09,988 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZVHC
+2021-04-23 13:22:10,505 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZZX2
+2021-04-23 13:22:10,521 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S00ZE
+2021-04-23 13:22:11,141 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4RZUQO
+2021-04-23 13:22:11,365 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S0AX6
+2021-04-23 13:22:13,132 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S0JI2
+2021-04-23 13:22:15,186 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S0Q4O
+2021-04-23 13:22:15,191 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S0US6
+2021-04-23 13:22:15,216 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S0TZK
+2021-04-23 13:22:16,413 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S1PLC
+2021-04-23 13:22:16,530 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S1QWK
+2021-04-23 13:22:17,713 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S22XW
+2021-04-23 13:22:17,851 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S24EE
+2021-04-23 13:22:18,585 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S2MYQ
+2021-04-23 13:22:18,979 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S1UJO
+2021-04-23 13:22:19,384 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWVWF2
+2021-04-23 13:22:19,660 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00E4S1X9Q
+2021-04-23 13:22:21,266 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWW30A
+2021-04-23 13:22:21,416 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWW40E
+2021-04-23 13:22:21,805 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWW4FO
+2021-04-23 13:22:23,120 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWW7AQ
+2021-04-23 13:22:23,406 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWW9ZE
+2021-04-23 13:22:24,520 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWEF4
+2021-04-23 13:22:24,729 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWHGU
+2021-04-23 13:22:24,926 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWFDU
+2021-04-23 13:22:25,134 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWGBG
+2021-04-23 13:22:25,233 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWEVI
+2021-04-23 13:22:25,347 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWI1E
+2021-04-23 13:22:25,550 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWJ4A
+2021-04-23 13:22:25,855 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWJVI
+2021-04-23 13:22:26,177 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWLH0
+2021-04-23 13:22:26,555 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWLV6
+2021-04-23 13:22:26,556 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWJFO
+2021-04-23 13:22:26,929 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWMRO
+2021-04-23 13:22:27,075 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWN82
+2021-04-23 13:22:27,110 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWKSU
+2021-04-23 13:22:27,257 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWMD8
+2021-04-23 13:22:27,393 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWORM
+2021-04-23 13:22:27,420 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWNSW
+2021-04-23 13:22:27,921 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWK9E
+2021-04-23 13:22:27,940 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWPGM
+2021-04-23 13:22:28,076 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWQG6
+2021-04-23 13:22:28,207 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWQ1Q
+2021-04-23 13:22:28,814 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIWWP2Q
+2021-04-23 13:22:29,023 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIYGZ66
+2021-04-23 13:22:29,058 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:57] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数53 --地址:https://www.amazon.ca/dp/B00FIYGZKM
+2021-04-23 13:22:55,827 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:235] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:3 -- 2021-04-23 13:22:55.826253
+2021-04-23 13:22:55,827 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 总耗时1.5329061
+2021-04-23 13:22:55,827 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: ============================END===================================
+2021-04-23 13:23:49,709 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:235] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:3 -- 2021-04-23 13:23:49.709803
+2021-04-23 13:23:49,709 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 总耗时1.0592829000000001
+2021-04-23 13:23:49,709 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: ============================END===================================
+2021-04-23 13:28:05,052 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:3 -- 2021-04-23 13:28:05.052442
+2021-04-23 13:28:05,053 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时1.2695872000000001
+2021-04-23 13:28:05,053 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 13:31:53,389 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:3 -- 2021-04-23 13:31:53.389579
+2021-04-23 13:31:53,389 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时13.5651836
+2021-04-23 13:31:53,389 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
+2021-04-23 13:32:55,783 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:236] - WARNING: 类目爬虫任务已结束!!  本次执行任务数:3 -- 2021-04-23 13:32:55.783695
+2021-04-23 13:32:55,784 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:237] - WARNING: 总耗时42.0503577
+2021-04-23 13:32:55,784 - c:\Users\NINGMEI\myprojectReview\获取数据.py[line:238] - WARNING: ============================END===================================
