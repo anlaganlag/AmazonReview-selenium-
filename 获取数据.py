@@ -35,7 +35,14 @@ class IndexSpider():
         d.set_page_load_timeout(20)  # 设置最长等待时间
         d.maximize_window()
         return d
-
+    def GetSitePostfix(site):
+        siteDict = {
+                'US':"com",
+                'UK':"co.uk"
+        }
+        if site in siteDict:
+            return siteDict[site]
+        return site.lower()  
     def Scheduling_task(self, item, url):
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
@@ -45,7 +52,7 @@ class IndexSpider():
         "sortBy": "helpful",
         "scope": "reviewsAjax2",
         }
-        URL="https://www.amazon.com/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
+        URL=f"https://www.amazon.{GetSitePostfix(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
 
         try:
             item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -66,52 +73,72 @@ class IndexSpider():
             html=eval(itemObj)[2]
             html_x = etree.HTML(html)
             try:
-                ReviewId=html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
-                # print("     ReviewId是:",ReviewId)
-                item_reviews ["ReviewId"] = ReviewId
-                #获取用户名、
-                CustomName=html_x.xpath("//span[@class='a-profile-name']/text()")[0]
-                item_reviews ["CustomName"] = CustomName
-                #获取评分
-                ReviewStars= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
-                # print("    ",CustomName,"给出的评分是",ReviewStars)
-                item_reviews ["ReviewStars"] = ReviewStars
-
-                #获取标题
-                ReviewTitle=html_x.xpath("//a[@data-hook='review-title']/span/text()")[0]
-                # print("    ","评论的标题是：",ReviewTitle)
-                item_reviews ["ReviewTitle"] = ReviewTitle
-
-                #获取评论的日期
-                ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
-                # print("    ","评论时间：",ReviewDate)
-                item_reviews ["ReviewDate"] = ReviewDate
-
-                #获取有用数的日期
+                try:
+                    ReviewId=html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
+                    # print("     ReviewId是:",ReviewId)
+                    item_reviews ["ReviewId"] = ReviewId
+                except:
+                    item_reviews ["ReviewId"] = ""
+                try:
+                    #获取用户名、
+                    CustomName=html_x.xpath("//span[@class='a-profile-name']/text()")[0].replace('\'','\^')
+                    item_reviews ["CustomName"] = CustomName
+                except:
+                    item_reviews ["CustomName"] = ""
+                    #获取评分
+                try:
+                    ReviewStars= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
+                    # print("    ",CustomName,"给出的评分是",ReviewStars)
+                    item_reviews ["ReviewStars"] = ReviewStars.replace(",",".")
+                except:
+                    item_reviews ["ReviewStars"] =0.0
+                try:
+                    #获取标题
+                    ReviewTitle=html_x.xpath("//a[@data-hook='review-title']/span/text()")[0].replace('\'','\^')
+                    # print("    ","评论的标题是：",ReviewTitle)
+                    item_reviews ["ReviewTitle"] = ReviewTitle
+                except:
+                    item_reviews ["ReviewTitle"] =""
+                try:
+                    #获取评论的日期
+                    ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
+                    # print("    ","评论时间：",ReviewDate)
+                    item_reviews ["ReviewDate"] = ReviewDate
+                except:
+                    item_reviews ["ReviewDate"] = ""
+                    #获取有用数的日期
                 try:
                     HelpfulNum=html_x.xpath("//span[@data-hook='helpful-vote-statement']/text()")[0].split(" ")[0]
                     # print("    ","好评数：",HelpfulNum)
+                    if HelpfulNum == "one":
+                        HelpfulNum=1
                     item_reviews ["HelpfulNum"] = HelpfulNum
                 except:
-                     item_reviews ["HelpfulNum"] = 0
-                #获取评论
-                ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0]
-                # print("    ","评论：",ReviewText)
-                item_reviews ["ReviewText"] = ReviewText
+                        item_reviews ["HelpfulNum"] = 0
+                try:
+                    #获取评论
+                    ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0].replace('\'','\^')
+                    # print("    ","评论：",ReviewText)
+                    item_reviews ["ReviewText"] = ReviewText
+                except:
+                    item_reviews ["ReviewText"] = "空"
 
                 try:
                     #图片
                     ReviewMedia=html_x.xpath("//img[@class='cr-lightbox-image-thumbnail']/@src")
                     # print("    ","多媒体信息：",ReviewMedia)
-                    item_reviews ["ReviewMedia"] = ReviewMedia
+                    if ReviewMedia:
+                        item_reviews ["ReviewMedia"] = " ".join(ReviewMedia)
                 except:
                     item_reviews["ReviewMedia"] = []
             
             except Exception as e:
-                print(f'error:{e}')
-                logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
+                pass
+                # print(f'error:{e}')
+                # logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
             DataList.append(item_reviews)
-        print("获取的结果条数:",len(DataList),DataList)
+        print("获取的结果条数:",item['Asin'],len(DataList))
+        self.SaveAtDataDb(DataList,item)
 
 
     def handle_Verification_Code(self, dictData):
@@ -166,32 +193,30 @@ class IndexSpider():
                 d.quit()
 
     def SaveAtDataDb(self, DataList, item):
-        connect = pymssql.connect('192.168.0.228', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
-        cursor = connect.cursor()  # 创建执行sql语句对象
-        headSql = "INSERT INTO TbReptileDateToAmazonCategory ([site],[Ranking],[Asin],[Title],[Brand],[Cetegory],[Price],[CommentNum],[Star],[PageLink],[TaskLink]) VALUES"
-        DataSql = ""
-        for dictData in DataList:
-            DataSql = f" ('{dictData['site']}','{dictData['goodsRanking']}', '{dictData['goodsAsin']}', N'{dictData['goodsTitle']}', '{dictData['goodsBrand']}', N'{dictData['cetegory']}','{dictData['goodsPrice']}','{dictData['goodsCommentNum']}', '{dictData['goodsStar']}', '{dictData['goodsLink']}', '{item['taskLink']}')," + DataSql
-        Sql = (headSql + DataSql)[:-1]
-        cursor.execute(Sql)
-        if '&pg=2' not in item['taskLink']:  # 如果是第一页 那么我就把开始的时间写入
-            StartUpdateSql = f"update TbReptileTaskToEveryDay set rtBegTime='{item['taskStartTime']}' where rtLink='{item['taskLink']}' and rtID={item['taskid']}"
-            cursor.execute(StartUpdateSql)
-        else:  # 就是第二页 我直接把结束的时间写入
-            item['taskLink'] = item['taskLink'].replace("&pg=2", "")  # 先去除
+        try:
+            connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
+            cursor = connect.cursor()  # 创建执行sql语句对象
+            headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
+            DataSql = ""
+            for dictData in DataList:
+                DataSql = f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', N'{dictData['CustomName']}', '{dictData['ReviewStars']}', N'{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}')," + DataSql
+            Sql = (headSql + DataSql)[:-1]
+            # print("Sql:",Sql)
+            if len(Sql) == 175:
+                return
+            cursor.execute(Sql)    
             item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
-            EndUpdateSql = f"update TbReptileTaskToEveryDay set rtState='已完成', rtEndTime='{item['taskEndTime']}' where rtLink='{item['taskLink']}' and rtID={item['taskid']}"
+            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN={item['Asin']} and taskSite={item['Site']}"
             cursor.execute(EndUpdateSql)
-        connect.commit()
-        connect.close()  # 关闭数据库
+            # print("EndUpdateSql:",EndUpdateSql)
 
+            connect.commit()
+            connect.close()  # 关闭数据库
+                  
+        except Exception as e:
+            print(f'error:{e}',len(Sql),Sql)
+            logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
-
-
-           
-
-
-  
 
 if __name__ == '__main__':
     def GetSitePostfix(site):
@@ -211,7 +236,7 @@ if __name__ == '__main__':
     # print(rows[72888:72889])
     ListTaskUrl = []  # 存放数据库任务
 
-    for taskid,Site,Asin,StartScrping,state in rows[:3]:
+    for taskid,Site,Asin,StartScrping,state in rows:
         # print(taskid,Site,Asin,StartScrping,state,"===========6============")
         itemTask = {}
         itemTask['taskid'] = taskid
