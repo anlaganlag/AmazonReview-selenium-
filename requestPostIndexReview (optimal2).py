@@ -1,6 +1,4 @@
 from concurrent.futures import ThreadPoolExecutor
-from fateadm_api import TestFunc
-from selenium import webdriver
 from lxml import etree
 import requests
 import datetime
@@ -9,57 +7,43 @@ import logging
 import time
 import os
 import re
-from lxml import etree
 class IndexReviewSpider():
     def __init__(self):
         self.headers = {
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36",
+            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
         }
         logging.basicConfig(level=logging.WARNING,  # 控制台打印的日志级别
                             filename=f'{datetime.datetime.now().date()}new.log',
                             filemode='a',  ##模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
                             # a是追加模式，默认如果不写的话，就是追加模式
                             format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
-        self.d = self.webdriverSingle()
 
-    def webdriverSingle(self):
-        chrome_options = Options()
-        chrome_options.add_argument(
-            '--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"')  # 请求头
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片
-        chrome_options.add_argument('lang=en-US.UTF-8')  # 修复美国站出现中文的问题
-        chrome_options.add_argument('--headless')  # 隐藏界面
-        chrome_options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
-        d = webdriver.Chrome(options=chrome_options)  # 生成无界面对象
-        d.set_page_load_timeout(20)  # 设置最长等待时间
-        d.maximize_window()
-        return d 
 
     def made_task(self, taskList):
+        print('开始made_task')
         for task in taskList:
+            print(task)
+            print('在for循环里面!')
             item = {}
-            item['taskid'] = taskLink['taskid']
-            item['taskLink'] = taskLink['taskurl']  
-            item['Asin'] = taskLink['Asin']
-            item['Site'] = taskLink['Site']
+            item['taskid'] = task['taskid']
+            item['taskLink'] = task['taskurl']  
+            item['Asin'] = task['Asin']
+            item['Site'] = task['Site']
             print("任务的参数",item["taskid"],item["Asin"],item["Site"],item["taskLink"])
-            self.Scheduling_task(item, DataList)
-    def Scheduling_task(self, item, url):
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
-        }
-        body = {
+            print("++++++++++++++++++++++++++++++++++++++")
+            self.Scheduling_task(item)
+    def Scheduling_task(self, item):
+        print("*****************进入实际的Scheduling*****************")
+        URL=f"https://www.amazon.{self.GetSiteDomain(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
+        body= {
             "asin": f"{item['Asin']}",
             "sortBy": "helpful",
             "scope": "reviewsAjax2",
         }
-        URL=f"https://www.amazon.{GetSiteDomain(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
-
         try:
             item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            r = requests.post(URL,headers=headers,data=body)
-            # print("=================全文",r.text)
+            r = requests.post(URL,headers=self.headers,data=body)
+            print("=================全文",r.text)
             self.get_data(item, r.text)
 
         except Exception as e:
@@ -104,11 +88,11 @@ class IndexReviewSpider():
                     ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
                     item_reviews ["ReviewDate"] = ReviewDate
                 except:
-                    pass
+                    item_reviews ["ReviewDate"] = ReviewDate
                 #获取有用数
                 try:
                     HelpfulNum=html_x.xpath("//span[@data-hook='helpful-vote-statement']/text()")[0].split(" ")[0]
-                    if HelpfulNum == "one":
+                    if len(HelpfulNum) > 1:#将one,或者Eine德语等转换成 1
                         HelpfulNum=1
                     item_reviews ["HelpfulNum"] = HelpfulNum 
                 except:
@@ -205,7 +189,13 @@ class IndexReviewSpider():
         except Exception as e:
             print(f'数据库存储错误:\n SQL语句:',Sql)
             logging.error(f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n,Sql:\n{Sql}\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')  # 将错误信息打印在控制台中
-
+    def GetSiteDomain(self,site):
+        """从站点名获取站点对应的顶级域名"""
+        siteDomain = {
+                'US':"com",
+                'UK':"co.uk"
+        }
+        return siteDomain[site] if siteDomain.get(site) else site.lower()
 class HandleTask():
     def ReadDBTask(self):
         connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
@@ -229,7 +219,7 @@ class HandleTask():
         end_list.append(list_info[-count:]) if count != 0 else end_list
         return end_list
 
-     def GetSiteDomain(site):
+    def GetSiteDomain(self,site):
         """从站点名获取站点对应的顶级域名"""
         siteDomain = {
                 'US':"com",
@@ -240,7 +230,6 @@ if __name__ == '__main__':
     start_time = time.perf_counter()
     Task = HandleTask()
     DbDataRows = Task.ReadDBTask()
-
     ListTaskUrl = []  # 存放数据库任务
 
     for taskid,Site,Asin,*rest in DbDataRows:
@@ -250,7 +239,7 @@ if __name__ == '__main__':
         itemTask['Asin'] = Asin
         itemTask['taskurl'] = f"https://www.amazon.{Task.GetSiteDomain(Site)}/dp/{Asin}"
         ListTaskUrl.append(itemTask)
-    print(len(ListTaskUrl))
+
 
 
     if len(ListTaskUrl) != 0:
@@ -266,19 +255,13 @@ if __name__ == '__main__':
         else:
             excelData_group = Task.list_of_groups(ListTaskUrl,
                                                   (len(ListTaskUrl) // threadsNumber) + 1)  # 第二个参数是每个线程要执行的任务数
-
+        # print("开启的线程数目:",threadsNumber,"分割的列表个数:",len(excelData_group),"第一个列表长度:",len(excelData_group[0]))
         # 线程池
-        spiderList = []
         with ThreadPoolExecutor(max_workers=threadsNumber) as t:  # 创建一个最大容纳数量为n的线程池
+            spider = IndexReviewSpider()
             for i in range(0, threadsNumber):
-                spider = IndexReviewSpider()
-                locals()[i] = spider  # 实例化不同的对象    解决线程安全
-                print(id(spider))  # 根据id 去判断示例不同的对A象
-                spiderList.append(spider)
+                # print("查看线程池:",spiderList)
                 task = t.submit(spider.made_task, excelData_group[i])
-
-        for spiders in spiderList:
-            spiders.d.quit()  # 依此关闭所有的浏览器
 
         logging.warning(f'首页评论爬虫任务已结束!!  本次任务数:{len(ListTaskUrl)} -- {datetime.datetime.now()}')
         end_time = time.perf_counter()
