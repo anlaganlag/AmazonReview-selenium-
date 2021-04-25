@@ -61,7 +61,7 @@ class IndexSpider():
             self.get_data(item, r.text)
 
         except Exception as e:
-            print(f'error:{e}')
+            print(f'安排任务错误:{e}')
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
     def get_data(self, item, codeText):  #
@@ -134,8 +134,8 @@ class IndexSpider():
             
             except Exception as e:
                 pass
-                # print(f'error:{e}')
-                # logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
+                print(f'xpath解析错误:{e}')
+                logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
             DataList.append(item_reviews)
         print("获取的结果条数:",item['Asin'],len(DataList))
         self.SaveAtDataDb(DataList,item)
@@ -201,12 +201,11 @@ class IndexSpider():
             for dictData in DataList:
                 DataSql = f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', N'{dictData['CustomName']}', '{dictData['ReviewStars']}', N'{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}')," + DataSql
             Sql = (headSql + DataSql)[:-1]
-            # print("Sql:",Sql)
-            if len(Sql) == 175:
+            if len(Sql) < 200:
                 return
             cursor.execute(Sql)    
             item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
-            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN={item['Asin']} and taskSite={item['Site']}"
+            EndUpdateSql = f"update TbInd';exReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN={item['Asin']} and taskSite={item['Site']}"
             cursor.execute(EndUpdateSql)
             # print("EndUpdateSql:",EndUpdateSql)
 
@@ -214,7 +213,8 @@ class IndexSpider():
             connect.close()  # 关闭数据库
                   
         except Exception as e:
-            print(f'error:{e}',len(Sql),Sql)
+            print(f'存储数据库错误:{e}')
+
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
 
@@ -255,7 +255,7 @@ if __name__ == '__main__':
             item['taskLink'] = taskLink['taskurl']  # 直接拿到任务地址的索引
             item['Asin'] = taskLink['Asin']
             item['Site'] = taskLink['Site']
-            print("任务的参数",item,"和链接",item['taskLink'],'>>>>>>>>>>>>>>')
+            print("任务的参数",item,"和链接",item['taskLink'])
             task = t.submit(spider.Scheduling_task, item, item['taskLink'])
     end_time = time.perf_counter()
     logging.warning(f'类目爬虫任务已结束!!  本次执行任务数:{len(ListTaskUrl)} -- {datetime.datetime.now()}')
