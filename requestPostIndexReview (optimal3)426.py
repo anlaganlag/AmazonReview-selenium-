@@ -1,16 +1,12 @@
 from concurrent.futures import ThreadPoolExecutor
-from pika.exceptions import AMQPConnectionError
 from lxml import etree
 import requests
 import datetime
 import pymssql
 import logging
-import json
 import time
 import os
 import re
-from retry import retry
-import pika
 class IndexReviewSpider():
     def __init__(self):
         self.headers = {
@@ -21,28 +17,8 @@ class IndexReviewSpider():
                             filemode='a',  ##模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
                             # a是追加模式，默认如果不写的话，就是追加模式
                             format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
-        self.username = 'jc_crawler'  # 指定远程rabbitmq的用户名密码
-        self.pwd = 'Jinchang001'
-        self.user_pwd = pika.PlainCredentials(self.username, self.pwd)
-        self.parameters = pika.ConnectionParameters('localhost',credentials=self.user_pwd)
-    
 
-    def conn(self):
-        connection = pika.BlockingConnection(self.parameters)
-        connection.process_data_events()
-        channel = connection.channel()
-        return channel
 
-    @retry(pika.exceptions.AMQPConnectionError, delay=5, jitter=(1, 3))   #MQ重连
-    def MQComsumer(self):
-        channel = self.conn()
-        channel.queue_declare(queue='AmazonReviewUrls', durable=True)  # 队列持久化
-        channel.basic_qos(prefetch_count=100)  # 单个线程在MQ每次取得的消息量
-        channel.basic_consume('AmazonReviewUrls', self.callback)  # 消费消息  如果收到消息就 调用回调函数
-        print(' [*] Waiting for messages. To exit press CTRL+C')
-        channel.start_consuming()  #循环取任务
-    def comsumerCallback(self, ch, method, properties, body):
-        
     def made_task(self, taskList):
         for task in taskList:
             item = {}
@@ -67,6 +43,7 @@ class IndexReviewSpider():
         except Exception as e:
             print(f'任务分配错误:{e}--错误所在行数{e.__traceback__.tb_lineno}--地址:{item["taskLink"]}')
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
+
     def get_data(self, item, codeText):  #
         DataList = []
         try:
@@ -133,6 +110,7 @@ class IndexReviewSpider():
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
         print("尝试存入数据库的Asin和条数:",item['Asin'],len(DataList))
         self.SaveAtDataDb(DataList,item)
+
     def handle_Verification_Code(self, dictData):
         d = self.webdriverSingle()
         while True:
@@ -183,6 +161,7 @@ class IndexReviewSpider():
                 os.remove(f'{dictData["taskLink"][-5:] + imgTimeId}img.jpg')  # 删除验证码图片  预防不同进程间的错误识别
                 self.get_data(dictData, d.page_source)
                 d.quit()
+
     def SaveAtDataDb(self, DataList, item):
         try:
             connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
