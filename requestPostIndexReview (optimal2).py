@@ -37,45 +37,47 @@ class IndexReviewSpider():
         try:
             item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             r = requests.post(URL,headers=self.headers,data=body)
+            # print(item,r.text)
             self.get_data(item, r.text)
 
         except Exception as e:
-            print(f'任务分配错误:{e}')
+            print(f'任务分配错误:{e}--错误所在行数{e.__traceback__.tb_lineno}--地址:{item["taskLink"]}')
             logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
     def get_data(self, item, codeText):  #
         DataList = []
-        myLIST=codeText.split("&&&")
-        for msg in myLIST[3:-5]:
-            item_reviews = {"Site":item["Site"],"Asin":item["Asin"],"CreateTime":item["CreateTime"]}
-            itemObj=msg.replace("\n","")
-            html=eval(itemObj)[2]#将json转换为python列表对象
-            html_x = etree.HTML(html)#解析成html
-            try:
+        try:
+            myLIST=codeText.split("&&&")
+            for msg in myLIST[3:-5]:
+                item_reviews = {"Site":item["Site"],"Asin":item["Asin"],"CreateTime":item["CreateTime"]}
+                itemObj=msg.replace("\n","")
+                html=eval(itemObj)[2]#将json转换为python列表对象
+                html_x = etree.HTML(html)#解析成html
+                #获取评论Id
                 try:
                     ReviewId=html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
                     item_reviews ["ReviewId"] = ReviewId
                 except:
                     item_reviews ["ReviewId"] = ""
+                #获取用户名
                 try:
-                    #获取用户名、
                     CustomName=html_x.xpath("//span[@class='a-profile-name']/text()")[0].replace('\'','\^')
                     item_reviews ["CustomName"] = CustomName
                 except:
                     item_reviews ["CustomName"] = ""
-                    # 获取评分
+                # 获取评分
                 try:
                     ReviewStars= html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0]
                     item_reviews ["ReviewStars"] = ReviewStars.replace(",",".") 
                 except:
                     item_reviews ["ReviewStars"] = 0.0
-                    #获取评论标题
+                #获取评论标题
                 try:
                     ReviewTitle=html_x.xpath("//a[@data-hook='review-title']/span/text()")[0].replace('\'','\^')
                     item_reviews ["ReviewTitle"] = ReviewTitle
                 except:
                     item_reviews ["ReviewTitle"] = ""
-                    #获取评论的日期
+                #获取评论的日期
                 try:
                     ReviewDate=html_x.xpath("//span[@data-hook='review-date']/text()")[0]
                     item_reviews ["ReviewDate"] = ReviewDate
@@ -89,23 +91,23 @@ class IndexReviewSpider():
                     item_reviews ["HelpfulNum"] = HelpfulNum 
                 except:
                     item_reviews ["HelpfulNum"] = 0
-                    #获取评论正文
+                #获取评论正文
                 try:
                     ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0].replace('\'','\^')
                     item_reviews ["ReviewText"] = ReviewText
                 except:
                     item_reviews ["ReviewText"] = ""
-
-                    #获取评论图片
+                #获取评论图片
                 try:
                     ReviewMedia=html_x.xpath("//img[@class='cr-lightbox-image-thumbnail']/@src")
                     item_reviews ["ReviewMedia"] = " ".join(ReviewMedia)
                 except:
                     item_reviews["ReviewMedia"] = ""
-            except Exception as e:
-                print(f'解析错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
-                logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
-            DataList.append(item_reviews)
+                DataList.append(item_reviews)
+
+        except Exception as e:
+            print(f'解析错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
+            logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
         print("尝试存入数据库的Asin和条数:",item['Asin'],len(DataList))
         self.SaveAtDataDb(DataList,item)
 
@@ -166,9 +168,10 @@ class IndexReviewSpider():
         try:
             connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
             cursor = connect.cursor()  
+            DataSql =EndUpdateSql= ""
             if DataList:
                 for dictData in DataList:
-                    DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
+                    DataSql = f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}')," + DataSql
                 Sql = (headSql + DataSql).strip(",")
                 cursor.execute(Sql)
             item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
@@ -177,7 +180,7 @@ class IndexReviewSpider():
             connect.commit()
             connect.close()  # 关闭数据库
         except Exception as e:
-            print(f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__+" "+ str(e.args[1])[2:70]}...)\n{Sql}')
+            print(f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__+" "+ str(e.args[1])[2:70]}...)')
             logging.error(f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n,Sql:\n{Sql}\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')  # 将错误信息打印在控制台中
     def GetSiteDomain(self,site):
         """从站点名获取站点对应的顶级域名"""
@@ -267,25 +270,3 @@ if __name__ == '__main__':
         logging.warning("============================END===================================")
 
 
-
-    # if len(ListTaskUrl) != 0:
-    #     threadsNumber = 8
-    # if len(ListTaskUrl) % threadsNumber == 0:  #
-    #     excelData_group = Task.list_of_groups(ListTaskUrl, len(ListTaskUrl) // threadsNumber)
-    # else:
-    #     excelData_group = Task.list_of_groups(ListTaskUrl,
-    #                                             (len(ListTaskUrl) // threadsNumber) + 1)  # 第二个参数是每个线程要执行的任务数
-    #     spiderList = []
-    #     with ThreadPoolExecutor(max_workers=8) as t:
-    #         for i in range(0, threadsNumber): 
-    #             spider = IndexReviewSpider()
-    #             locals()[i] = spider
-    #             print(id(spider))  # 根据id 去判断示例不同的对A象
-    #             spiderList.append(spider)    
-    #             task = t.submit(spider.made_task, excelData_group[i])
-    #     for spiders in spiderList:
-    #         spiders.d.quit()  # 依此关闭所有的浏览器
-    # logging.warning(f'首页评论爬虫任务已结束!!  本次执行任务数:{len(ListTaskUrl)} -- {datetime.datetime.now()}')
-    # end_time = time.perf_counter()
-    # logging.warning(f'总耗时{end_time - start_time}')
-    # logging.warning("============================END===================================")
