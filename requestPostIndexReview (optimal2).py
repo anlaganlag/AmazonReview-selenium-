@@ -20,20 +20,14 @@ class IndexReviewSpider():
 
 
     def made_task(self, taskList):
-        print('开始made_task')
         for task in taskList:
-            print(task)
-            print('在for循环里面!')
             item = {}
             item['taskid'] = task['taskid']
             item['taskLink'] = task['taskurl']  
             item['Asin'] = task['Asin']
             item['Site'] = task['Site']
-            print("任务的参数",item["taskid"],item["Asin"],item["Site"],item["taskLink"])
-            print("++++++++++++++++++++++++++++++++++++++")
             self.Scheduling_task(item)
     def Scheduling_task(self, item):
-        print("*****************进入实际的Scheduling*****************")
         URL=f"https://www.amazon.{self.GetSiteDomain(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
         body= {
             "asin": f"{item['Asin']}",
@@ -43,7 +37,6 @@ class IndexReviewSpider():
         try:
             item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             r = requests.post(URL,headers=self.headers,data=body)
-            print("=================全文",r.text)
             self.get_data(item, r.text)
 
         except Exception as e:
@@ -61,7 +54,6 @@ class IndexReviewSpider():
             try:
                 try:
                     ReviewId=html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
-                    # print("     ReviewId是:",ReviewId)
                     item_reviews ["ReviewId"] = ReviewId
                 except:
                     item_reviews ["ReviewId"] = ""
@@ -100,7 +92,6 @@ class IndexReviewSpider():
                     #获取评论正文
                 try:
                     ReviewText=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")[0].replace('\'','\^')
-                        # print("    ","评论：",ReviewText)
                     item_reviews ["ReviewText"] = ReviewText
                 except:
                     item_reviews ["ReviewText"] = ""
@@ -112,10 +103,10 @@ class IndexReviewSpider():
                 except:
                     item_reviews["ReviewMedia"] = ""
             except Exception as e:
-                print(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
+                print(f'解析错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
                 logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
             DataList.append(item_reviews)
-        print("获取的结果条数:",item['Asin'],len(DataList))
+        print("尝试存入数据库的Asin和条数:",item['Asin'],len(DataList))
         self.SaveAtDataDb(DataList,item)
 
     def handle_Verification_Code(self, dictData):
@@ -170,24 +161,23 @@ class IndexReviewSpider():
                 d.quit()
 
     def SaveAtDataDb(self, DataList, item):
-        Sql = ""
+        Sql= ""
+        headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
         try:
             connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
-            cursor = connect.cursor()  # 创建执行sql语句对象
-            headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
-            DataSql =EndUpdateSql= ""
+            cursor = connect.cursor()  
             if DataList:
                 for dictData in DataList:
-                    DataSql = f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}')," + DataSql
+                    DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
                 Sql = (headSql + DataSql).strip(",")
-                cursor.execute(Sql) 
-                item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
-                EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
-                cursor.execute(EndUpdateSql)
-                connect.commit()
-                connect.close()  # 关闭数据库
+                cursor.execute(Sql)
+            item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
+            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
+            cursor.execute(EndUpdateSql)
+            connect.commit()
+            connect.close()  # 关闭数据库
         except Exception as e:
-            print(f'数据库存储错误:\n SQL语句:',Sql)
+            print(f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__+" "+ str(e.args[1])[2:70]}...)\n{Sql}')
             logging.error(f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n,Sql:\n{Sql}\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')  # 将错误信息打印在控制台中
     def GetSiteDomain(self,site):
         """从站点名获取站点对应的顶级域名"""
@@ -255,12 +245,11 @@ if __name__ == '__main__':
         else:
             excelData_group = Task.list_of_groups(ListTaskUrl,
                                                   (len(ListTaskUrl) // threadsNumber) + 1)  # 第二个参数是每个线程要执行的任务数
-        # print("开启的线程数目:",threadsNumber,"分割的列表个数:",len(excelData_group),"第一个列表长度:",len(excelData_group[0]))
+        print("开启的线程数目:",threadsNumber,"分割的列表个数:",len(excelData_group),"第一个列表长度:",len(excelData_group[0]))
         # 线程池
         with ThreadPoolExecutor(max_workers=threadsNumber) as t:  # 创建一个最大容纳数量为n的线程池
             spider = IndexReviewSpider()
             for i in range(0, threadsNumber):
-                # print("查看线程池:",spiderList)
                 task = t.submit(spider.made_task, excelData_group[i])
 
         logging.warning(f'首页评论爬虫任务已结束!!  本次任务数:{len(ListTaskUrl)} -- {datetime.datetime.now()}')
