@@ -163,20 +163,26 @@ class IndexReviewSpider():
                 d.quit()
 
     def SaveAtDataDb(self, DataList, item):
-        Sql= ""
-        headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
         try:
             connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
             cursor = connect.cursor()  
-            DataSql =EndUpdateSql= ""
-            if DataList:
-                for dictData in DataList:
-                    DataSql = f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}')," + DataSql
-                Sql = (headSql + DataSql).strip(",")
-                cursor.execute(Sql)
+        except Exception as e:
+            print(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
+            logging.error(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
+        try:
+            DataSql =EndUpdateSql=Sql= ""
             item['taskEndTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 任务结束时间
             EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
-            cursor.execute(EndUpdateSql)
+            if not DataList:
+                cursor.execute(EndUpdateSql)
+            else:
+                headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
+                for dictData in DataList:
+                    DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
+                Sql = (headSql + DataSql).strip(",")
+                cursor.execute(Sql)
+                EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{item['taskEndTime']}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
+                cursor.execute(EndUpdateSql)
             connect.commit()
             connect.close()  # 关闭数据库
         except Exception as e:
