@@ -164,7 +164,7 @@ class IndexReviewSpider():
             now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             item['taskEndTime'] = now
             DataSql=InsertSql= ""
-            headSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
+            InsertHeadSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
             EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
             if  DataList:
                 DataSql=InsertSql= ""
@@ -174,12 +174,13 @@ class IndexReviewSpider():
                     cursor.execute(confirmSQL)
                     confirmSQLrows = cursor.fetchone()
                     if confirmSQLrows:
-                        updateSQL = f"update TbIndexReviewSpiderData set CreateTime='{now}'' where ReviewId = '{dictData['ReviewId']}'"
+                        updateSQL = f"update TbIndexReviewSpiderData set CreateTime='{now}' where ReviewId = '{dictData['ReviewId']}'"
                         cursor.execute(updateSQL)
                     else:
                         DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
-                        InsertSql = (headSql + DataSql).strip(",")
-            cursor.execute(InsertSql)
+            sql = (InsertHeadSql + DataSql).strip(",")
+            if len(sql) > len(InsertHeadSql):
+                cursor.execute((InsertHeadSql + DataSql).strip(","))
             cursor.execute(EndUpdateSql)
             connect.commit()
             connect.close()  # 关闭数据库
