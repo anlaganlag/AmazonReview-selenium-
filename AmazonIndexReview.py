@@ -12,29 +12,32 @@ import re
 from retry import retry
 import pika
 
+
 def GetSiteDomain(site):
     """从站点名获取站点对应的顶级域名"""
-    siteDomain = {
-            'US':"com",
-            'UK':"co.uk"
-    }
+    siteDomain = {'US': "com", 'UK': "co.uk"}
     return siteDomain[site] if siteDomain.get(site) else site.lower()
+
 
 class IndexReviewSpider():
     def __init__(self):
         self.headers = {
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
+            'User-Agent':
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
         }
-        logging.basicConfig(level=logging.WARNING,  # 控制台打印的日志级别
-                            filename=f'{datetime.datetime.now().date()}new.log',
-                            filemode='a',  ##模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
-                            # a是追加模式，默认如果不写的话，就是追加模式
-                            format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+        logging.basicConfig(
+            level=logging.WARNING,  # 控制台打印的日志级别
+            filename=f'{datetime.datetime.now().date()}new.log',
+            filemode='a',  ##模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
+            # a是追加模式，默认如果不写的话，就是追加模式
+            format=
+            '%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
+        )
         self.username = 'jc_crawler'  # 指定远程rabbitmq的用户名密码
         self.pwd = 'Jinchang001'
         self.user_pwd = pika.PlainCredentials(self.username, self.pwd)
-        self.parameters = pika.ConnectionParameters('192.168.2.214',credentials=self.user_pwd)
-    
+        self.parameters = pika.ConnectionParameters('192.168.2.214',
+                                                    credentials=self.user_pwd)
 
     def conn(self):
         connection = pika.BlockingConnection(self.parameters)
@@ -42,135 +45,151 @@ class IndexReviewSpider():
         channel = connection.channel()
         return channel
 
-    @retry(pika.exceptions.AMQPConnectionError, delay=5, jitter=(1, 3))   #MQ重连
+    @retry(pika.exceptions.AMQPConnectionError, delay=5, jitter=(1, 3))  #MQ重连
     def MQComsumer(self):
         try:
             channel = self.conn()
             channel.queue_declare(queue='IndexReview', durable=True)  # 队列持久化
             channel.basic_qos(prefetch_count=100)  # 单个线程在MQ每次取得的消息量
-            channel.basic_consume('IndexReview', self.callback)  # 消费消息  如果收到消息就 调用回调函数
+            channel.basic_consume('IndexReview',
+                                  self.callback)  # 消费消息  如果收到消息就 调用回调函数
             print(' [*] Waiting for messages. To exit press CTRL+C')
             channel.start_consuming()  #循环取任务
         except Exception as e:
-            print(f'MQ消费错误:{e}--错误所在行数{e.__traceback__.tb_lineno}--地址:{item["taskLink"]}')
-            logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
 
+            print(f'MQ消费错误:{e}--错误所在行数{e.__traceback__.tb_lineno}--地址:')
+            logging.error(
+                f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:')  # 将错误信息打印在控制台中
 
-    def made_task(self, taskList):
-        for task in taskList:
-            item = {}
-            item['taskid'] = task['taskid']
-            item['taskLink'] = task['taskurl']  
-            item['Asin'] = task['Asin']
-            item['Site'] = task['Site']
-            self.Scheduling_task(item)
-    def callback(self,ch, method, properties, jsondata):
+    def callback(self, ch, method, properties, jsondata):
         item = json.loads(jsondata)
         # print(f" [x] Received {item}{type(item)}")
-        URL=f"https://www.amazon.{GetSiteDomain(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
-        body= {
+        URL = f"https://www.amazon.{GetSiteDomain(item['Site'])}/hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt"
+        body = {
             "asin": f"{item['Asin']}",
             "sortBy": "helpful",
             "scope": "reviewsAjax2",
         }
 
-
         try:
-            item["CreateTime"] =  datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            r = requests.post(URL,headers=self.headers,data=body)
+            item["CreateTime"] = datetime.datetime.now().strftime(
+                '%Y-%m-%d %H:%M:%S')
+            r = requests.post(URL, headers=self.headers, data=body)
             # print(item,r.text)
-            self.get_data(item, r.text)
-            ch.basic_ack(delivery_tag=method.delivery_tag)
+            self.get_data(item, r.text, ch, method)
 
         except Exception as e:
-            print(f'任务分配错误:{e}--错误所在行数{e.__traceback__.tb_lineno}--地址:{item["taskLink"]}')
-            logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
-    def get_data(self, item, codeText):  #
+            print(f'任务分配错误:{e}--错误所在行数{e.__traceback__.tb_lineno}')
+            logging.error(
+                f'{e},错误所在行数{e.__traceback__.tb_lineno} ')  # 将错误信息打印在控制台中
+            ch.basic_nack(delivery_tag=method.delivery_tag)
+
+    def get_data(self, item, codeText, ch, method):  #
         DataList = []
         try:
-            myLIST=codeText.split("&&&")
+            myLIST = codeText.split("&&&")
+            if len(myLIST) <= 8:
+                raise Exception
             for msg in myLIST[3:-5]:
-                item_reviews = {"Site":item["Site"],"Asin":item["Asin"],"CreateTime":item["CreateTime"]}
-                itemObj=msg.replace("\n","")
-                html=eval(itemObj)[2]#将json转换为python列表对象
-                html_x = etree.HTML(html)#解析成html
+                item_reviews = {
+                    "Site": item["Site"],
+                    "Asin": item["Asin"],
+                    "CreateTime": item["CreateTime"]
+                }
+                itemObj = msg.replace("\n", "")
+                html = eval(itemObj)[2]  #将json转换为python列表对象
+                html_x = etree.HTML(html)  #解析成html
                 #获取评论Id
                 try:
-                    item_reviews ["ReviewId"] = html_x.xpath("//div[@class='a-section review aok-relative']/@id")[0]
+                    item_reviews["ReviewId"] = html_x.xpath(
+                        "//div[@class='a-section review aok-relative']/@id")[0]
                 except:
-                    item_reviews ["ReviewId"] = ""
+                    item_reviews["ReviewId"] = ""
                 #获取用户名
                 try:
-                    item_reviews ["CustomName"] = html_x.xpath("//span[@class='a-profile-name']/text()")[0].replace('\'','\^')
+                    item_reviews["CustomName"] = html_x.xpath(
+                        "//span[@class='a-profile-name']/text()")[0].replace(
+                            '\'', '\^')
                 except:
-                    item_reviews ["CustomName"] = ""
+                    item_reviews["CustomName"] = ""
                 # 获取评分
                 try:
-                    item_reviews ["ReviewStars"] = html_x.xpath("//span[@class='a-icon-alt']/text()")[0].split(" ")[0].replace(",",".") 
+                    item_reviews["ReviewStars"] = html_x.xpath(
+                        "//span[@class='a-icon-alt']/text()")[0].split(
+                            " ")[0].replace(",", ".")
                 except:
-                    item_reviews ["ReviewStars"] = 0.0
+                    item_reviews["ReviewStars"] = 0.0
                 #获取评论标题
                 try:
-                    item_reviews ["ReviewTitle"] = html_x.xpath("//a[@data-hook='review-title']/span/text()")[0].replace('\'','\^')
+                    item_reviews["ReviewTitle"] = html_x.xpath(
+                        "//a[@data-hook='review-title']/span/text()"
+                    )[0].replace('\'', '\^')
                 except:
-                    item_reviews ["ReviewTitle"] = ""
+                    item_reviews["ReviewTitle"] = ""
                 #获取评论的日期
                 try:
-                    item_reviews ["ReviewDate"] = html_x.xpath("//span[@data-hook='review-date']/text()")[0]
+                    item_reviews["ReviewDate"] = html_x.xpath(
+                        "//span[@data-hook='review-date']/text()")[0]
                 except:
-                    item_reviews ["ReviewDate"] = ""
+                    item_reviews["ReviewDate"] = ""
                 #获取有用数
                 try:
-                    HelpfulNum=html_x.xpath("//span[@data-hook='helpful-vote-statement']/text()")[0].split(" ")[0]
-                    if len(HelpfulNum) > 1:#将one,或者Eine德语等转换成 1
-                        HelpfulNum=1
-                    item_reviews ["HelpfulNum"] = HelpfulNum 
+                    HelpfulNum = html_x.xpath(
+                        "//span[@data-hook='helpful-vote-statement']/text()"
+                    )[0].split(" ")[0]
+                    if len(HelpfulNum) > 1:  #将one,或者Eine德语等转换成 1
+                        HelpfulNum = 1
+                    item_reviews["HelpfulNum"] = HelpfulNum
                 except:
-                    item_reviews ["HelpfulNum"] = 0
+                    item_reviews["HelpfulNum"] = 0
                 #获取评论正文
                 try:
-                    ReviewTextList=html_x.xpath("//div[@data-hook='review-collapsed']/span/text()")
-                    ReviewText="".join(ReviewTextList).replace('\\n', '').strip().replace('\'',' ')
-                    item_reviews ["ReviewText"] = ReviewText
+                    ReviewTextList = html_x.xpath(
+                        "//div[@data-hook='review-collapsed']/span/text()")
+                    ReviewText = "".join(ReviewTextList).replace(
+                        '\\n', '').strip().replace('\'', ' ')
+                    item_reviews["ReviewText"] = ReviewText
                 except:
-                    item_reviews ["ReviewText"] = "" 
+                    item_reviews["ReviewText"] = ""
                 #获取评论图片
                 try:
-                    ReviewMedia=html_x.xpath("//img[@class='cr-lightbox-image-thumbnail']/@src")
-                    item_reviews ["ReviewMedia"] = " ".join(ReviewMedia)
+                    ReviewMedia = html_x.xpath(
+                        "//img[@class='cr-lightbox-image-thumbnail']/@src")
+                    item_reviews["ReviewMedia"] = " ".join(ReviewMedia)
                 except:
                     item_reviews["ReviewMedia"] = ""
                 DataList.append(item_reviews)
 
         except Exception as e:
-            print(f'解析错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
-            logging.error(f'{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
-        print("尝试存入数据库的Asin和条数:",item['Asin'],len(DataList))
+            print(f'解析错误!{e},错误所在行数{e.__traceback__.tb_lineno}')
+            logging.error(
+                f'{e},错误所在行数{e.__traceback__.tb_lineno}')  # 将错误信息打印在控制台中
+        print("尝试存入数据库的Asin和条数:", item['Asin'], len(DataList))
 
-        self.SaveAtDataDb(DataList,item)
-        
-    
+        self.SaveAtDataDb(DataList, item, ch, method)
 
-    
-    def SaveAtDataDb(self, DataList, item):
+    def SaveAtDataDb(self, DataList, item, ch, method):
         try:
-            connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
-            cursor = connect.cursor()  
+            connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123',
+                                      'EBMS')  # 服务器名,账户,密码,数据库名
+            cursor = connect.cursor()
         except Exception as e:
-            print(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')
-            logging.error(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} --地址:{item["taskLink"]}')  # 将错误信息打印在控制台中
-        
+            print(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} ')
+            logging.error(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} '
+                          )  # 将错误信息打印在控制台中
+
         try:
             now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             item['taskEndTime'] = now
-            DataSql=InsertSql= ""
+
             InsertHeadSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
-            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(u'\xa0', u' ')
-            if  DataList:
-                DataSql=InsertSql= ""
+            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(
+                u'\xa0', u' ')
+            if DataList:
+                DataSql = InsertSql = ""
                 for dictData in DataList:
-                    #确认插入前存在 
-                    confirmSQL= f"select ReviewId from TbIndexReviewSpiderData where ReviewId = '{dictData['ReviewId']}'"
+                    #确认插入前存在
+                    confirmSQL = f"select ReviewId from TbIndexReviewSpiderData where ReviewId = '{dictData['ReviewId']}'"
                     cursor.execute(confirmSQL)
                     confirmSQLrows = cursor.fetchone()
                     if confirmSQLrows:
@@ -180,52 +199,35 @@ class IndexReviewSpider():
                         DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
             sql = (InsertHeadSql + DataSql).strip(",")
             if len(sql) > len(InsertHeadSql):
-                cursor.execute((InsertHeadSql + DataSql).strip(","))
+                cursor.execute(sql)
             cursor.execute(EndUpdateSql)
+            ch.basic_nack(delivery_tag=method.delivery_tag)
             connect.commit()
             connect.close()  # 关闭数据库
         except Exception as e:
-            # print(f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__+" "+ str(e.args[1])[2:70]}...){Sql} {EndUpdateSql}')
-            print(f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__} {str(e.args[1])[2:70]} {updateSQL} )')
-            logging.error(f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n,Sql:\n{Sql}\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')  # 将错误信息打印在控制台中
+            print(
+                f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__} {str(e.args[1])[2:70]}  )'
+            )
+            logging.error(
+                f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+            )  # 将错误信息打印在控制台中
 
-class HandleTask():
-    def ReadDBTask(self):
-        connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
-        cursor = connect.cursor()  # 创建执行sql语句对象
-        Sql = "select * from TbIndexReviewSpiderTask where taskState = 'New'"  # 获取id   Top  每次拿出多少条
-        cursor.execute(Sql)
-        rows = cursor.fetchall()
-        connect.close()  # 关闭数据库
-        return rows
-
-    # 将单个列表 按照长度分割成多个列表
-    def list_of_groups(self, list_info, per_list_len):
-        '''
-        :param list_info:   要分割的列表
-        :param per_list_len:  每个小列表的长度
-        :return:  end_list :   存分割之后的小列表的一个大列表
-        '''
-        list_of_group = zip(*(iter(list_info),) * per_list_len)
-        end_list = [list(i) for i in list_of_group]  # i is a tuple
-        count = len(list_info) % per_list_len
-        end_list.append(list_info[-count:]) if count != 0 else end_list
-        return end_list
 
 if __name__ == '__main__':
     if not os.path.exists('log'):
         os.makedirs('log')
         print("日志文件夹创建成功！")
-    threadsNumber = 8
+    threadsNumber = 12
     start = time.perf_counter()
     with ThreadPoolExecutor(max_workers=threadsNumber) as t:
         for i in range(threadsNumber):
             spider = IndexReviewSpider()
             locals()[i] = spider
             task = t.submit(spider.MQComsumer)
-    print('===================================end==================================')
+    # spider = IndexReviewSpider()
+    # spider.MQComsumer()
+    print(
+        '===================================end=================================='
+    )
     end = time.perf_counter()
     print(f'耗时{end - start}')
-
-
-
