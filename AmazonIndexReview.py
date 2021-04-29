@@ -74,12 +74,13 @@ class IndexReviewSpider():
         try:
             item["CreateTime"] = datetime.datetime.now().strftime(
                 '%Y-%m-%d %H:%M:%S')
-            r = requests.post(URL, headers=self.headers, data=body)
-            if len(r.text.split('&&&')) ==8:#即评论页为空,可以直接确认消费
+            response = requests.post(URL, headers=self.headers, data=body)
+            reviewText = response.text.split('&&&')
+            if len(reviewText) ==8:#即评论页为空,可以直接确认消费
                 ch.basic_ack(delivery_tag=method.delivery_tag) 
                 return
                 
-            self.get_data(item, r.text, ch, method)
+            self.get_data(item, reviewText[3:-5], ch, method)
 
         except Exception as e:
             print(f'连接失误任务重新排队:{e}--错误所在行数{e.__traceback__.tb_lineno}')
@@ -90,13 +91,11 @@ class IndexReviewSpider():
     def get_data(self, item, codeText, ch, method):  #
         DataList = []
         try:
-            myLIST = codeText.split("&&&")
-            if len(myLIST) <= 8:
-                raise Exception
-            for msg in myLIST[3:-5]:
+            for msg in codeText:
                 item_reviews = {
                     "Site": item["Site"],
                     "Asin": item["Asin"],
+                    'Taskid':item["taskid"],
                     "CreateTime": item["CreateTime"]
                 }
                 itemObj = msg.replace("\n", "")
@@ -151,7 +150,7 @@ class IndexReviewSpider():
                         "//div[@data-hook='review-collapsed']/span/text()")
                     ReviewText = "".join(ReviewTextList).replace(
                         '\\n', '').strip().replace('\'', ' ')
-                    item_reviews["ReviewText"] = ReviewText
+                    item_reviews["ReviewText"] = ReviewText[:2000]
                 except:
                     item_reviews["ReviewText"] = ""
                 #获取评论图片
@@ -182,8 +181,7 @@ class IndexReviewSpider():
                 item['taskEndTime'] = now
                 DataSql = ""
                 InsertHeadSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
-                EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(
-                    u'\xa0', u' ')
+                EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where id='{item['taskid']}'"
                 if DataList:
                     for dictData in DataList:
                         confirmSQL = f"select ReviewId from TbIndexReviewSpiderData where ReviewId = '{dictData['ReviewId']}'"
@@ -221,17 +219,16 @@ if __name__ == '__main__':
     if not os.path.exists('log'):
         os.makedirs('log')
         print("日志文件夹创建成功！")
-    threadsNumber = 12
+    threadsNumber = 1
     start = time.perf_counter()
     with ThreadPoolExecutor(max_workers=threadsNumber) as t:
         for i in range(threadsNumber):
             spider = IndexReviewSpider()
-            locals()[i] = spider
+            # locals()[i] = spider
             task = t.submit(spider.MQComsumer)
     # spider = IndexReviewSpider()
     # spider.MQComsumer()
-    print(
-        '===================================end=================================='
+    print(        '===================================end=================================='
     )
     end = time.perf_counter()
     print(f'耗时{end - start}')
