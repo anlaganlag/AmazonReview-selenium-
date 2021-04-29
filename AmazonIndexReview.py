@@ -75,11 +75,14 @@ class IndexReviewSpider():
             item["CreateTime"] = datetime.datetime.now().strftime(
                 '%Y-%m-%d %H:%M:%S')
             r = requests.post(URL, headers=self.headers, data=body)
-            # print(item,r.text)
+            if len(r.text.split('&&&')) ==8:#即评论页为空,可以直接确认消费
+                ch.basic_ack(delivery_tag=method.delivery_tag) 
+                return
+                
             self.get_data(item, r.text, ch, method)
 
         except Exception as e:
-            print(f'任务分配错误:{e}--错误所在行数{e.__traceback__.tb_lineno}')
+            print(f'连接失误任务重新排队:{e}--错误所在行数{e.__traceback__.tb_lineno}')
             logging.error(
                 f'{e},错误所在行数{e.__traceback__.tb_lineno} ')  # 将错误信息打印在控制台中
             ch.basic_nack(delivery_tag=method.delivery_tag)
@@ -173,44 +176,45 @@ class IndexReviewSpider():
             connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123',
                                       'EBMS')  # 服务器名,账户,密码,数据库名
             cursor = connect.cursor()
+
+            try:
+                now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                item['taskEndTime'] = now
+                DataSql = ""
+                InsertHeadSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
+                EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(
+                    u'\xa0', u' ')
+                if DataList:
+                    for dictData in DataList:
+                        confirmSQL = f"select ReviewId from TbIndexReviewSpiderData where ReviewId = '{dictData['ReviewId']}'"
+                        #确认插入前存在
+                        cursor.execute(confirmSQL)
+                        confirmSQLrows = cursor.fetchone()
+                        if confirmSQLrows:
+                            updateSQL = f"update TbIndexReviewSpiderData set CreateTime='{now}' where ReviewId = '{dictData['ReviewId']}'"
+                            cursor.execute(updateSQL)
+                        else:
+                            DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
+                sql = (InsertHeadSql + DataSql).strip(",")
+                if len(sql) > len(InsertHeadSql):
+                    cursor.execute(sql)
+                cursor.execute(EndUpdateSql)
+                
+                connect.commit()
+                ch.basic_ack(delivery_tag=method.delivery_tag) 
+
+                connect.close()  # 关闭数据库
+            except Exception as e:
+                print(
+                    f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__} {str(e.args[1])[2:70]}  )'
+                )
+                logging.error(
+                    f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+                )  # 将错误信息打印在控制台中
         except Exception as e:
             print(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} ')
             logging.error(f'数据库连接错误!{e},错误所在行数{e.__traceback__.tb_lineno} '
                           )  # 将错误信息打印在控制台中
-
-        try:
-            now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            item['taskEndTime'] = now
-
-            InsertHeadSql = "INSERT INTO TbIndexReviewSpiderData ([ReviewId],[Site],[Asin],[CustomName],[ReviewStars],[ReviewTitle],[ReviewDate],[HelpfulNum],[ReviewText],[ReviewMedia],[CreateTime]) VALUES"
-            EndUpdateSql = f"update TbIndexReviewSpiderTask set taskState='Success',SpiderTime='{now}' where CASIN='{item['Asin']}' and taskSite='{item['Site']}'".replace(
-                u'\xa0', u' ')
-            if DataList:
-                DataSql = InsertSql = ""
-                for dictData in DataList:
-                    #确认插入前存在
-                    confirmSQL = f"select ReviewId from TbIndexReviewSpiderData where ReviewId = '{dictData['ReviewId']}'"
-                    cursor.execute(confirmSQL)
-                    confirmSQLrows = cursor.fetchone()
-                    if confirmSQLrows:
-                        updateSQL = f"update TbIndexReviewSpiderData set CreateTime='{now}' where ReviewId = '{dictData['ReviewId']}'"
-                        cursor.execute(updateSQL)
-                    else:
-                        DataSql += f" ('{dictData['ReviewId']}','{dictData['Site']}', '{dictData['Asin']}', '{dictData['CustomName']}', '{dictData['ReviewStars']}', '{dictData['ReviewTitle']}','{dictData['ReviewDate']}','{dictData['HelpfulNum']}', '{dictData['ReviewText']}', '{dictData['ReviewMedia']}', '{item['CreateTime']}'),"
-            sql = (InsertHeadSql + DataSql).strip(",")
-            if len(sql) > len(InsertHeadSql):
-                cursor.execute(sql)
-            cursor.execute(EndUpdateSql)
-            ch.basic_nack(delivery_tag=method.delivery_tag)
-            connect.commit()
-            connect.close()  # 关闭数据库
-        except Exception as e:
-            print(
-                f'数据库存储失败: {e.__traceback__.tb_lineno}行代码出错! ({type(e).__name__} {str(e.args[1])[2:70]}  )'
-            )
-            logging.error(
-                f'{e}\n,错误所在行数{e.__traceback__.tb_lineno}\n\n\n,EndUpdateSql:\n{EndUpdateSql}\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
-            )  # 将错误信息打印在控制台中
 
 
 if __name__ == '__main__':
