@@ -215,7 +215,7 @@ class IndexReviewSpider():
                           )  # 将错误信息打印在控制台中
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     if not os.path.exists('log'):
         os.makedirs('log')
         print("日志文件夹创建成功！")
