@@ -38,17 +38,48 @@ class IndexReviewSpider():
         self.user_pwd = pika.PlainCredentials(self.username, self.pwd)
         self.parameters = pika.ConnectionParameters('192.168.2.214',
                                                     credentials=self.user_pwd)
-
     def conn(self):
         connection = pika.BlockingConnection(self.parameters)
         connection.process_data_events()
         channel = connection.channel()
-        return channel
-
+        return channel,connection
+    def ReadDBTask(self):
+        connect = pymssql.connect('192.168.2.163', 'sa', 'JcEbms123', 'EBMS')  # 服务器名,账户,密码,数据库名
+        cursor = connect.cursor()  # 创建执行sql语句对象
+        Sql = "SELECT * FROM TbIndexReviewSpiderTask where taskState= 'New'"  # 获取id   Top  每次拿出多少条
+        cursor.execute(Sql)
+        rows = cursor.fetchall()
+        connect.close()  # 关闭数据库
+        return rows
+    def DBToMQ(self, jsonData):  # 写入MQ   若连接出现问题 会一直重复这里的操作
+        listItem = json.loads(jsonData)
+        channel,connection  = self.conn()
+        channel.queue_declare(queue='IndexReview', durable=True)  # 是否队列持久化
+        for item in listItem:
+            channel.basic_publish(exchange='',  # 交换机
+                                routing_key='IndexReview',  # 路由键，写明将消息发往哪个队列
+                                body=f'{json.dumps(item)}',
+                                properties=pika.BasicProperties(
+                                    delivery_mode=2, )  # delivery_mode=2 消息持久化
+                                )  # 生产者要发送的消息
+ # 1.消息生产者端发送消息时挂掉了,消费者接消息时挂掉了, rabbitMQ会让改消息重新回到消息队列中       2.手动向MQ确认消费
+        connection.close()  # 当生产者发送完消息后，可选择关闭连接
+    def sendToMQ(self):
+        DbDataRows = self.ReadDBTask()
+        ListTaskUrl = []
+        for taskid,Site,Asin,*rest in DbDataRows:
+            itemTask = {}
+            itemTask['taskid'] = taskid
+            itemTask['Site'] = Site
+            itemTask['Asin'] = Asin
+            itemTask['taskurl'] = f"https://www.amazon.{GetSiteDomain(Site)}/dp/{Asin}"
+            ListTaskUrl.append(itemTask)
+        jsonData = json.dumps(ListTaskUrl, ensure_ascii=False)
+        self.DBToMQ(jsonData)
     @retry(pika.exceptions.AMQPConnectionError, delay=5, jitter=(1, 3))  #MQ重连
     def MQComsumer(self):
         try:
-            channel = self.conn()
+            channel,_ = self.conn()
             channel.queue_declare(queue='IndexReview', durable=True)  # 队列持久化
             channel.basic_qos(prefetch_count=100)  # 单个线程在MQ每次取得的消息量
             channel.basic_consume('IndexReview',
@@ -73,7 +104,7 @@ class IndexReviewSpider():
         try:
             item["CreateTime"] = datetime.datetime.now().strftime(
                 '%Y-%m-%d %H:%M:%S')
-            response = requests.post(URL, headers=self.headers, data=body)
+            response = requests.post(URL, headers=self.headers, data=body,timeout=20)
             reviewText = response.text.split('&&&')
             if len(reviewText) == 8:  #即评论页为空,可以直接确认消费
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -237,6 +268,8 @@ if __name__ == '__main__':
     if not os.path.exists('log'):
         os.makedirs('log')
         print("日志文件夹创建成功！")
+    # pushSpider = IndexReviewSpider()
+    # pushSpider.sendToMQ()
     threadsNumber = 8
     start = time.perf_counter()
     with ThreadPoolExecutor(max_workers=threadsNumber) as t:

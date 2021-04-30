@@ -51,6 +51,9 @@ def SaveAtMQ( jsonData):  # 写入MQ   若连接出现问题 会一直重复这�
  # 1.消息生产者端发送消息时挂掉了,消费者接消息时挂掉了, rabbitMQ会让改消息重新回到消息队列中       2.手动向MQ确认消费
         connection.close()  # 当生产者发送完消息后，可选择关闭连接
 
+
+
+
 if __name__ == '__main__':
     user_pwd = pika.PlainCredentials('jc_crawler' , 'Jinchang001')
     parameters = pika.ConnectionParameters('192.168.2.214',credentials=user_pwd)

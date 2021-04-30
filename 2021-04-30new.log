@@ -1,0 +1,226 @@
+2021-04-30 09:34:00,154 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数164
+2021-04-30 09:34:38,762 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: local variable 'item_reviews' referenced before assignment,错误所在行数164
+2021-04-30 09:40:26,460 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:87] - ERROR: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)),错误所在行数77 
+2021-04-30 09:42:30,437 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:87] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数77 
+2021-04-30 09:42:58,464 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:87] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数77 
+2021-04-30 09:43:12,944 - C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py[line:1109] - ERROR: _AsyncBaseTransport._produce() failed, aborting connection: error=ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None); sock=<socket.socket fd=1332, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=6, laddr=('192.168.101.217', 64207), raddr=('192.168.2.214', 5672)>; Caller's stack:
+Traceback (most recent call last):
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1103, in _on_socket_writable
+    self._produce()
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 819, in _produce
+    num_bytes_sent = self._sigint_safe_send(self._sock,
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 861, in _sigint_safe_send
+    return sock.send(data)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+Traceback (most recent call last):
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 1103, in _on_socket_writable
+    self._produce()
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 819, in _produce
+    num_bytes_sent = self._sigint_safe_send(self._sock,
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 79, in retry_sigint_wrap
+    return func(*args, **kwargs)
+  File "C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\utils\io_services_utils.py", line 861, in _sigint_safe_send
+    return sock.send(data)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+2021-04-30 09:43:12,945 - C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\base_connection.py[line:428] - ERROR: connection_lost: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)",)
+2021-04-30 09:43:12,945 - C:\Users\NINGMEI\AppData\Local\Programs\Python\Python39\lib\site-packages\pika\adapters\blocking_connection.py[line:521] - ERROR: Unexpected connection close detected: StreamLostError: ("Stream connection lost: ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)",)
+2021-04-30 09:43:12,947 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Stream connection lost: ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None),错误所在行数167
+2021-04-30 09:43:20,768 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:23,930 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:30,895 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:87] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数77 
+2021-04-30 09:43:35,998 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:39,061 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:40,384 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:42,567 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:44,062 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:49,188 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:55,940 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:43:59,005 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:06,259 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:12,647 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:15,900 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:19,794 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:32,815 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:39,100 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:43,539 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:55,129 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:44:57,348 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:45:01,471 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:45:04,582 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:45:10,113 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:45:34,746 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 09:45:40,012 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:171] - ERROR: Channel is closed.,错误所在行数167
+2021-04-30 10:00:42,553 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,855 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,864 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,866 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,868 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,869 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,869 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,870 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:01:51,870 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:92] - ERROR: 'tuple' object has no attribute 'queue_declare',错误所在行数83 --地址:
+2021-04-30 10:02:15,013 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,149 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,424 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,432 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,436 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,466 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:15,857 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,020 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,304 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,335 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,337 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,373 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,736 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:16,941 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,105 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,188 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,202 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,251 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,624 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,829 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:17,997 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:18,103 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:18,113 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:18,150 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:19,079 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:19,262 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:19,397 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:19,464 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:19,510 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,034 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,193 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,260 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,290 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,381 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,497 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,929 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:20,935 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,107 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,155 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,178 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,292 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,401 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:21,808 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,031 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,039 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,084 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,219 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,293 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,631 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,732 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,940 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,943 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:22,977 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,088 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,190 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,472 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,841 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,850 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,926 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:23,970 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,094 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,379 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,700 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,741 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,809 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:24,877 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,048 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,276 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,600 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,613 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,663 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,755 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:25,930 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,263 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,506 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,516 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,551 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,651 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:26,814 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,191 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,380 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,404 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,425 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,538 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:27,689 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,044 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,256 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,327 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,336 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,397 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,575 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:28,955 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:29,633 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:29,802 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:29,835 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:29,840 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:29,991 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,353 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,549 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,762 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,793 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,817 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:30,851 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,219 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,450 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,479 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,721 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,723 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,731 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:31,942 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,199 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,401 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,461 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,599 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,614 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:32,660 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,116 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,286 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,389 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,508 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,531 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,582 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:33,988 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,129 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,317 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,324 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,438 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,448 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,758 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:34,983 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,204 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,216 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,331 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,340 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,652 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,720 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:35,930 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,120 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,203 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,204 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,481 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,518 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,688 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:36,990 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,107 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,130 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,206 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,413 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,510 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:02:37,740 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:199] - ERROR: 'IndexReviewSpider' object has no attribute 'D',错误所在行数195
+2021-04-30 10:05:30,946 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数107 
+2021-04-30 10:06:20,162 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数107 
+2021-04-30 10:06:35,149 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数107 
+2021-04-30 10:08:19,584 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')),错误所在行数107 
+2021-04-30 10:12:50,136 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Max retries exceeded with url: /hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000025D123F1EE0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')),错误所在行数107 
+2021-04-30 10:13:11,197 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Max retries exceeded with url: /hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000025D123F6250>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')),错误所在行数107 
+2021-04-30 10:13:32,238 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Max retries exceeded with url: /hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000025D123F6A90>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')),错误所在行数107 
+2021-04-30 10:13:53,295 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Max retries exceeded with url: /hz/reviews-render/ajax/medley-filtered-reviews/get/ref=cm_cr_dp_d_fltrs_srt (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000025D123F1F40>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')),错误所在行数107 
+2021-04-30 10:16:12,508 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.ca', port=443): Read timed out. (read timeout=20),错误所在行数107 
+2021-04-30 10:16:13,605 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Read timed out. (read timeout=20),错误所在行数107 
+2021-04-30 10:16:24,372 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.ca', port=443): Read timed out. (read timeout=20),错误所在行数107 
+2021-04-30 10:16:26,936 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Read timed out. (read timeout=20),错误所在行数107 
+2021-04-30 10:16:38,636 - c:\Users\NINGMEI\myprojectReview\AmazonIndexReview copy.py[line:117] - ERROR: HTTPSConnectionPool(host='www.amazon.es', port=443): Read timed out. (read timeout=20),错误所在行数107 
